@@ -1,0 +1,5482 @@
+[
+  {
+    "id": "game-c054-sjrj5f2",
+    "title": "7 Days to Die",
+    "description": "Complete 7 Days to Die V3.4 settings pool. (Some settings are not present due to not fitting RNG usage)",
+    "categories": [
+      {
+        "id": "cat-zkqd-f22rmri",
+        "name": "[World Gen] Game World",
+        "options": [
+          {
+            "id": "opt-3r2e-67mct8b",
+            "label": "Navezgane",
+            "rank": "D"
+          },
+          {
+            "id": "opt-ekt4-7s6gjmr",
+            "label": "Pregen8k",
+            "rank": "D"
+          },
+          {
+            "id": "opt-r5tr-yui1ygt",
+            "label": "Pregen10k",
+            "rank": "D"
+          },
+          {
+            "id": "opt-7v3p-6huj83w",
+            "label": "Pregen6k",
+            "rank": "D"
+          },
+          {
+            "id": "opt-tivw-m8rg97j",
+            "label": "New Random World",
+            "rank": "D"
+          },
+          {
+            "id": "opt-542x-9ip4gqt",
+            "label": "Pregen4k",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-libt-gwy92pc",
+        "name": "[World Gen] World Size",
+        "options": [
+          {
+            "id": "opt-ci73-2ee7y4a",
+            "label": "10240 (10K)",
+            "rank": "E"
+          },
+          {
+            "id": "opt-fpo4-l275ol7",
+            "label": "8192 (8K - Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-s0rr-3psb9ix",
+            "label": "6144 (6K)",
+            "rank": "C"
+          },
+          {
+            "id": "opt-j70r-hakqd68",
+            "label": "4096 (4K)",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-9sgp-17pro0o",
+        "name": "[World Gen] Biome Layout",
+        "options": [
+          {
+            "id": "opt-bpqo-y0z3ze6",
+            "label": "Center Forest (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-rym1-qtrsw48",
+            "label": "Circle",
+            "rank": "C"
+          },
+          {
+            "id": "opt-fj6u-8nixixt",
+            "label": "Line",
+            "rank": "C"
+          },
+          {
+            "id": "opt-nzvo-5vtf2ay",
+            "label": "Center Wasteland",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-2ry9-oei16vx",
+        "name": "[World Gen] Pine Forest Percentage",
+        "options": [
+          {
+            "id": "opt-nosi-a28rc8w",
+            "label": "100%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-3a54-i6sbcaj",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-p7oo-69s54sb",
+            "label": "20% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-ybsy-41sekis",
+            "label": "0%",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-k814-n2sunxq",
+        "name": "[World Gen] Burnt Forest Percentage",
+        "options": [
+          {
+            "id": "opt-0qni-t3ouo15",
+            "label": "0%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-9rtl-wdnk4k2",
+            "label": "20% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-mtyl-qrxy8t9",
+            "label": "50%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-4lkp-fdo7h9u",
+            "label": "100%",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-dpnq-72eyblg",
+        "name": "[World Gen] Desert Percentage",
+        "options": [
+          {
+            "id": "opt-13sy-vbwdv77",
+            "label": "0%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-4cqs-zu954kq",
+            "label": "20% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-prfs-ndsjrux",
+            "label": "50%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-az79-t530m1r",
+            "label": "100%",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-bau7-j0qn7w3",
+        "name": "[World Gen] Snow Percentage",
+        "options": [
+          {
+            "id": "opt-dhag-a9wpw3x",
+            "label": "0%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-2kyc-1yeli8y",
+            "label": "20% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-ur7d-77s5552",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-e5hq-n61urzd",
+            "label": "100%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-jzsx-5vp6hw2",
+        "name": "[World Gen] Wasteland Percentage",
+        "options": [
+          {
+            "id": "opt-bn24-1ji5kxs",
+            "label": "0%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-6yaz-l2h9hwa",
+            "label": "20% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-aq8l-pcwuhd5",
+            "label": "50%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-p3oo-1698tpq",
+            "label": "100%",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-xxpf-yfwztsm",
+        "name": "[World Gen] Terrain: Plains",
+        "options": [
+          {
+            "id": "opt-c8xf-b9my18r",
+            "label": "High (75%-100%)",
+            "rank": "E"
+          },
+          {
+            "id": "opt-21oj-6145kay",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-cxe5-vd4ltb5",
+            "label": "Random",
+            "rank": "D"
+          },
+          {
+            "id": "opt-p8l1-nh0jvqj",
+            "label": "Low (0%-25%)",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-f8po-u2nzyr4",
+        "name": "[World Gen] Terrain: Hills",
+        "options": [
+          {
+            "id": "opt-z8p1-kpjrnzy",
+            "label": "Low (0%-25%)",
+            "rank": "E"
+          },
+          {
+            "id": "opt-wgy8-229umso",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-smrx-tswn9tx",
+            "label": "Random",
+            "rank": "D"
+          },
+          {
+            "id": "opt-rud2-sdxx582",
+            "label": "High (75%-100%)",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-ec82-zukjuz9",
+        "name": "[World Gen] Terrain: Mountains",
+        "options": [
+          {
+            "id": "opt-wf33-w2mcgfe",
+            "label": "Low (0%-25%)",
+            "rank": "E"
+          },
+          {
+            "id": "opt-r4mn-s1pgd2w",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-ipba-mcjce39",
+            "label": "Random",
+            "rank": "D"
+          },
+          {
+            "id": "opt-1rdk-fv35l5i",
+            "label": "High (75%-100%)",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-094u-fe5g15k",
+        "name": "[World Gen] Towns",
+        "options": [
+          {
+            "id": "opt-pvtt-waht2h9",
+            "label": "Many",
+            "rank": "F"
+          },
+          {
+            "id": "opt-b4ha-inspj99",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-6ksl-h4chld9",
+            "label": "Few",
+            "rank": "B"
+          },
+          {
+            "id": "opt-7cgu-of7zj0b",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-mypw-5ffpq7x",
+        "name": "[World Gen] Wilderness POIs",
+        "options": [
+          {
+            "id": "opt-tuo9-dxolhpg",
+            "label": "Many",
+            "rank": "E"
+          },
+          {
+            "id": "opt-cr4s-sbrwgrg",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-4gk2-mgci2eg",
+            "label": "Few",
+            "rank": "C"
+          },
+          {
+            "id": "opt-lwbe-xvol5al",
+            "label": "None",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-qpej-t2pfdv9",
+        "name": "[World Gen] Rivers",
+        "options": [
+          {
+            "id": "opt-k8mz-wes4ro2",
+            "label": "Many",
+            "rank": "E"
+          },
+          {
+            "id": "opt-48s0-mowfjax",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-q940-lj15f8c",
+            "label": "Few",
+            "rank": "D"
+          },
+          {
+            "id": "opt-rlkj-frucl6d",
+            "label": "None",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-hf8r-mxiqqv1",
+        "name": "[World Gen] Lakes",
+        "options": [
+          {
+            "id": "opt-2iy3-iu4lbes",
+            "label": "Many",
+            "rank": "E"
+          },
+          {
+            "id": "opt-dakh-03bclxv",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-omia-79y6w9i",
+            "label": "Few",
+            "rank": "D"
+          },
+          {
+            "id": "opt-d873-v99iz59",
+            "label": "None",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-c5be-83lp5o3",
+        "name": "[World Gen] Craters",
+        "options": [
+          {
+            "id": "opt-imub-j5er8mw",
+            "label": "None",
+            "rank": "E"
+          },
+          {
+            "id": "opt-hkza-n1a1a2p",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-j1xw-41netnr",
+            "label": "Few",
+            "rank": "D"
+          },
+          {
+            "id": "opt-e7pq-sczpr9d",
+            "label": "Many",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-7epg-e5euebm",
+        "name": "[World Gen] Cracks",
+        "options": [
+          {
+            "id": "opt-a5sr-nyh77o3",
+            "label": "None",
+            "rank": "E"
+          },
+          {
+            "id": "opt-b0iy-xn63s8v",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-tvt1-8nho8vv",
+            "label": "Few",
+            "rank": "D"
+          },
+          {
+            "id": "opt-ry1m-plzyvs8",
+            "label": "Many",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-dqwz-h37bj97",
+        "name": "[Session] Player Killing (PvP)",
+        "options": [
+          {
+            "id": "opt-h9fy-ucfu0xs",
+            "label": "No Killing",
+            "rank": "E"
+          },
+          {
+            "id": "opt-t1cb-8jj1ts0",
+            "label": "Kill Strangers Only (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-47qe-yexvrp4",
+            "label": "Kill Allies Only",
+            "rank": "C"
+          },
+          {
+            "id": "opt-dg3w-l742eo0",
+            "label": "Kill Everyone",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-3aat-fz4u6vy",
+        "name": "[Session] Allow Spawn Near Friend",
+        "options": [
+          {
+            "id": "opt-r5uv-bnd8v3n",
+            "label": "Always",
+            "rank": "F"
+          },
+          {
+            "id": "opt-f198-se6q91s",
+            "label": "Forest Biome Only (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-2akq-3pjti6v",
+            "label": "Disabled",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-6l9y-d3ubywm",
+        "name": "[Session] Party Shared Kill Range",
+        "options": [
+          {
+            "id": "opt-y76k-yelzzo9",
+            "label": "10000m",
+            "rank": "F"
+          },
+          {
+            "id": "opt-liey-t8w8pwo",
+            "label": "5000m",
+            "rank": "E"
+          },
+          {
+            "id": "opt-46wf-ljgrvyu",
+            "label": "1000m (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-nzh4-3ajrvoc",
+            "label": "500m",
+            "rank": "C"
+          },
+          {
+            "id": "opt-itn7-9cayduh",
+            "label": "100m",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-9t0z-ormg3ix",
+        "name": "[Session] Persistent Profiles",
+        "options": [
+          {
+            "id": "opt-wngq-sgnbo6s",
+            "label": "Off (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-87gc-78ttvhl",
+            "label": "On",
+            "rank": "D"
+          }
+        ]
+      },
+      {
+        "id": "cat-717o-l1xn0fm",
+        "name": "[Session] Drop on Quit",
+        "options": [
+          {
+            "id": "opt-ywt7-bjizdvw",
+            "label": "Nothing (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-de7x-ohqojuj",
+            "label": "Toolbelt Only",
+            "rank": "C"
+          },
+          {
+            "id": "opt-j24s-13ai9yj",
+            "label": "Backpack Only",
+            "rank": "B"
+          },
+          {
+            "id": "opt-xtlr-q9otp0r",
+            "label": "Everything",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-hla6-5do04w3",
+        "name": "[Session] Land Claim Count",
+        "options": [
+          {
+            "id": "opt-4pt4-unvkvpc",
+            "label": "10",
+            "rank": "E"
+          },
+          {
+            "id": "opt-h09u-cvdlern",
+            "label": "5 (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-a062-4zkhzuw",
+            "label": "3",
+            "rank": "C"
+          },
+          {
+            "id": "opt-audx-tjfmdyl",
+            "label": "1",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-0gwc-a9u622p",
+        "name": "[Session] Land Claim Size",
+        "options": [
+          {
+            "id": "opt-hb3s-s8gep47",
+            "label": "71 Blocks",
+            "rank": "F"
+          },
+          {
+            "id": "opt-en9o-zm42wk5",
+            "label": "51 Blocks",
+            "rank": "E"
+          },
+          {
+            "id": "opt-pwr9-ikatzbs",
+            "label": "41 Blocks (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-d9ip-upjkelk",
+            "label": "31 Blocks",
+            "rank": "C"
+          },
+          {
+            "id": "opt-zh4z-hxdgpn7",
+            "label": "21 Blocks",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-2hl8-p8uu8x6",
+        "name": "[Session] Land Claim Deadzone",
+        "options": [
+          {
+            "id": "opt-ntgq-wirmr75",
+            "label": "50 Blocks",
+            "rank": "E"
+          },
+          {
+            "id": "opt-le29-q50hl41",
+            "label": "40 Blocks",
+            "rank": "E"
+          },
+          {
+            "id": "opt-udt1-il6bewq",
+            "label": "30 Blocks (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-acd1-2810vni",
+            "label": "20 Blocks",
+            "rank": "D"
+          },
+          {
+            "id": "opt-b609-se6nx0e",
+            "label": "15 Blocks",
+            "rank": "C"
+          },
+          {
+            "id": "opt-pyqt-wv3z3sd",
+            "label": "10 Blocks",
+            "rank": "C"
+          },
+          {
+            "id": "opt-lirj-qxdtc7w",
+            "label": "5 Blocks",
+            "rank": "B"
+          },
+          {
+            "id": "opt-f6ec-nc20uao",
+            "label": "No Deadzone",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-6lal-n7trd4z",
+        "name": "[Session] Land Claim Expiry Time",
+        "options": [
+          {
+            "id": "opt-4y0m-byqtcp3",
+            "label": "30 Days",
+            "rank": "E"
+          },
+          {
+            "id": "opt-wi8d-qrnrryf",
+            "label": "14 Days",
+            "rank": "E"
+          },
+          {
+            "id": "opt-1n5t-9f1kbv4",
+            "label": "7 Days (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-accl-zkz19j6",
+            "label": "3 Days",
+            "rank": "C"
+          },
+          {
+            "id": "opt-fiqg-wrbk7pt",
+            "label": "1 Day",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-ygsc-wa3ogh9",
+        "name": "[Session] Land Claim Decay Mode",
+        "options": [
+          {
+            "id": "opt-r6g7-u0uzhma",
+            "label": "None",
+            "rank": "E"
+          },
+          {
+            "id": "opt-mjkl-amq6b1n",
+            "label": "Slow (Linear)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-mk33-pkgm08j",
+            "label": "Fast (Exponential)",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-3ot6-9aw5xvx",
+        "name": "[Session] Land Claim Online Durability",
+        "options": [
+          {
+            "id": "opt-1bb2-c7rtqdp",
+            "label": "Infinite",
+            "rank": "F"
+          },
+          {
+            "id": "opt-aim3-bdps5jp",
+            "label": "16x",
+            "rank": "E"
+          },
+          {
+            "id": "opt-1pqx-cnv6d9a",
+            "label": "8x",
+            "rank": "E"
+          },
+          {
+            "id": "opt-7iac-bv2ki7z",
+            "label": "4x (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-y24e-wnftrfy",
+            "label": "2x",
+            "rank": "C"
+          },
+          {
+            "id": "opt-12m4-3titxdj",
+            "label": "1x",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-abd3-yipi243",
+        "name": "[Session] Land Claim Offline Durability",
+        "options": [
+          {
+            "id": "opt-t35c-nnuiznh",
+            "label": "Infinite",
+            "rank": "F"
+          },
+          {
+            "id": "opt-6zzl-98kj75a",
+            "label": "16x",
+            "rank": "E"
+          },
+          {
+            "id": "opt-aumf-db8vye2",
+            "label": "8x",
+            "rank": "E"
+          },
+          {
+            "id": "opt-y3sg-yxdk3j9",
+            "label": "4x (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-12zq-ooi68ps",
+            "label": "2x",
+            "rank": "C"
+          },
+          {
+            "id": "opt-ac5q-ybtf93m",
+            "label": "1x",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-cm2l-thkrh1k",
+        "name": "[Session] Bedroll Deadzone Size",
+        "options": [
+          {
+            "id": "opt-3iyv-co1hvpw",
+            "label": "30 Blocks",
+            "rank": "E"
+          },
+          {
+            "id": "opt-aylc-vwytb14",
+            "label": "15 Blocks (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-nk9e-yp7w1wl",
+            "label": "5 Blocks",
+            "rank": "C"
+          },
+          {
+            "id": "opt-abk4-wgtloiw",
+            "label": "No Deadzone",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-lx5a-ifo4tad",
+        "name": "[Session] Bedroll Expiry Time",
+        "options": [
+          {
+            "id": "opt-raoj-mce3vac",
+            "label": "60 Days",
+            "rank": "E"
+          },
+          {
+            "id": "opt-819c-a8v478o",
+            "label": "45 Days (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-xkvt-429q8py",
+            "label": "30 Days",
+            "rank": "D"
+          },
+          {
+            "id": "opt-4q1z-bedq5qm",
+            "label": "15 Days",
+            "rank": "C"
+          },
+          {
+            "id": "opt-h546-78yo0at",
+            "label": "7 Days",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-6868-3pgmc0z",
+        "name": "[Player] Ranged Damage",
+        "options": [
+          {
+            "id": "opt-esn3-odspaq6",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-pb2n-lh3y4tj",
+            "label": "250%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-bzuy-za0p2jv",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-iwi8-mbr01in",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-xl5i-pqghhmd",
+            "label": "125%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-0ayl-9xsvitn",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-dkh6-xgu0or0",
+            "label": "85%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-2i5u-t201eq4",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-woug-dk2qypb",
+            "label": "65%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-i0zz-9cr04fj",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-zc07-t09i39p",
+            "label": "35%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-8dmo-1bm6k64",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-tunz-pymlb5c",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-bt3y-z56nrfb",
+        "name": "[Player] Melee Damage",
+        "options": [
+          {
+            "id": "opt-hbda-qr4ou08",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-8g5b-9b27x7e",
+            "label": "250%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-w696-h6r7vf5",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-pt88-hb16b3p",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-82ux-v7togrz",
+            "label": "125%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-m39e-d7tefo4",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-nriz-ffjkd0k",
+            "label": "85%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-z32l-1zx4dd9",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-768o-9g4otpf",
+            "label": "65%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-2pc1-xztvd09",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-pplf-524h31z",
+            "label": "35%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-4qbn-g9txl1y",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-lelk-gra0qlg",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-ffww-e5jj0zv",
+        "name": "[Player] Block Damage",
+        "options": [
+          {
+            "id": "opt-zq5n-zb7c8y8",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-o3qy-lwez12f",
+            "label": "250%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-59or-v6mvt9a",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-fgu6-rwqhmkx",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-4aay-dw90dic",
+            "label": "125%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-7gqp-3rq7x8z",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-n6i9-v1gx16n",
+            "label": "85%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-5u7q-qbd4q5p",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-4pol-5k5jyui",
+            "label": "65%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-bmz6-avuoblm",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-zto9-5mywdk6",
+            "label": "35%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-99fk-5jz09vi",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-8nkc-spnoqjw",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-sj46-hz9mgle",
+        "name": "[Player] Terrain Damage",
+        "options": [
+          {
+            "id": "opt-1vdj-7bwoolb",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-eh7o-clywwlp",
+            "label": "250%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-qxcg-yaaje9d",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-nyii-vcdvmrn",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-otza-ao0cf1e",
+            "label": "125%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-dsap-un4gel2",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-epxt-a0zhx0q",
+            "label": "85%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-wjxn-42zvhjr",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-h534-yuexwku",
+            "label": "65%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-tlvc-6jp31ip",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-34lb-d5vu3qa",
+            "label": "35%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-thh2-1o18ozg",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-mwph-3qvp5ii",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-ap7e-8zafu5t",
+        "name": "[Player] Headshot Multiplier",
+        "options": [
+          {
+            "id": "opt-ajj0-deuijxd",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-4qjx-9fetenl",
+            "label": "250%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-7t43-ca8v3g7",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-83py-8t9683f",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-66ng-jt8uam6",
+            "label": "125%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-w2ps-lai6roy",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-2xik-jh7lit0",
+            "label": "85%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-v9bl-uqkffry",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-iegx-593pfx8",
+            "label": "65%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-yqqt-7h1ycjz",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-hk3v-gf0rox2",
+            "label": "35%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-gxr7-lupk09s",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-2hd4-m10s0h4",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-ecla-ci0fo2g",
+        "name": "[Player] Player Damage In (Incoming)",
+        "options": [
+          {
+            "id": "opt-lyo1-03iidco",
+            "label": "None",
+            "rank": "F"
+          },
+          {
+            "id": "opt-aro6-2vff5ih",
+            "label": "25%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-7tmv-j5c41dq",
+            "label": "35%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-f3jp-t2v16qv",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-gbuj-4mdcdi6",
+            "label": "65%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-92y7-dnzo1ug",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-wgqn-375lprv",
+            "label": "85%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-qyd6-7vqr63r",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-7n2f-w6hw3j8",
+            "label": "125%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-ras5-jpub3xx",
+            "label": "150%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-ek15-nez9rr0",
+            "label": "200%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-hah8-007dyqr",
+            "label": "250%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-8kdu-4fm6vyd",
+            "label": "300%",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-4xbu-sggwcn5",
+        "name": "[Player] Crouch Speed",
+        "options": [
+          {
+            "id": "opt-51my-m9a6bx0",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-w7ar-fkujb0b",
+            "label": "200%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-2yug-8b0wk91",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-v6ht-h5fi4yg",
+            "label": "140%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-nag5-iivaz2v",
+            "label": "130%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-yw6r-m92z859",
+            "label": "120%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-q988-mpnkiis",
+            "label": "110%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-1qbx-wj9qvc7",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-ehnh-fjdyybv",
+            "label": "90%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-ebi8-j5q8mln",
+            "label": "80%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-hh4k-g69b7by",
+            "label": "70%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-s39j-3xkyk3h",
+            "label": "60%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-tirh-ffcxbmd",
+            "label": "50%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-33j1-w0rg0bd",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-sxrz-9vs2sfl",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-7sbo-p78q80z",
+        "name": "[Player] Walk Speed",
+        "options": [
+          {
+            "id": "opt-0ahc-wt8unkf",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-f9im-we6zq54",
+            "label": "200%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-zhcs-fhjneua",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-t9cq-2jaor0x",
+            "label": "140%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-ce0s-smi5355",
+            "label": "130%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-hx1f-nlf5cwk",
+            "label": "120%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-234z-obi0oxg",
+            "label": "110%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-ttfe-vkjm16w",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-snht-ch9usc8",
+            "label": "90%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-zsig-1jomclh",
+            "label": "80%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-5pk3-i8xrsh0",
+            "label": "70%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-p2xm-u5t9g5a",
+            "label": "60%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-v5tv-lvu19gb",
+            "label": "50%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-en9n-y5gq5bn",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-xl65-42m6n5t",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-q0dy-2kidbup",
+        "name": "[Player] Run Speed",
+        "options": [
+          {
+            "id": "opt-efvn-x1f11wn",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-rpbk-e3aev0l",
+            "label": "200%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-2hcv-87yd3nd",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-lt2j-yeglzgi",
+            "label": "140%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-uvve-aj9s4c5",
+            "label": "130%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-ee76-ge3y43w",
+            "label": "120%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-mtsb-nj5ov7l",
+            "label": "110%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-9sp9-ecuc31a",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-xzki-i56o81t",
+            "label": "90%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-11gm-4n1legd",
+            "label": "80%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-ntop-1dwcdea",
+            "label": "70%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-j26v-i7z1yc4",
+            "label": "60%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-aw0w-etd74of",
+            "label": "50%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-347o-8kp89of",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-6vo6-dqupomk",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-hz88-k0jff5y",
+        "name": "[Player] Jump Strength",
+        "options": [
+          {
+            "id": "opt-4nva-hzai21w",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-23uh-x60uowe",
+            "label": "200%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-ra9y-bwzixgo",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-09ms-z9n8s2w",
+            "label": "125%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-hdxh-6f15wnw",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-geih-jh5pe30",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-uitl-e5ns564",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-q9yj-1nnv93a",
+        "name": "[Player] Stamina Usage",
+        "options": [
+          {
+            "id": "opt-3bzk-ycy8o49",
+            "label": "None",
+            "rank": "F"
+          },
+          {
+            "id": "opt-mfjp-i6stcl9",
+            "label": "25%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-acvz-4wdsabx",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-sax7-oy9vj0y",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-orko-ci837re",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-3huk-fo9ti79",
+            "label": "125%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-03aq-rwgu3y0",
+            "label": "150%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-q5bi-bu1tzua",
+            "label": "200%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-xkdp-vingeck",
+        "name": "[Player] Stamina Regen",
+        "options": [
+          {
+            "id": "opt-o31i-pkpjnmm",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-jw0v-73z2gb5",
+            "label": "200%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-5ysu-3qzverv",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-0jd4-nhnx2ny",
+            "label": "125%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-31c7-dm2auz0",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-00if-q1rntwd",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-c7fm-f7sywle",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-rqyw-73ga9ew",
+            "label": "25%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-odja-f9znurh",
+        "name": "[Player] Hunger Multiplier",
+        "options": [
+          {
+            "id": "opt-1aok-3yuqdaz",
+            "label": "None (0%)",
+            "rank": "F"
+          },
+          {
+            "id": "opt-22ot-eqsy3by",
+            "label": "25%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-nzzr-i6v7r2f",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-p40m-ip2hvye",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-l0cm-zvilaug",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-dmpd-p9nyq9u",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-e7ln-nbwcijb",
+            "label": "200%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-gdri-b1kx6lu",
+            "label": "300%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-vphx-9iyul3j",
+        "name": "[Player] Thirst Multiplier",
+        "options": [
+          {
+            "id": "opt-t7nn-lc0f6qw",
+            "label": "None (0%)",
+            "rank": "F"
+          },
+          {
+            "id": "opt-ztkt-03019y8",
+            "label": "25%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-qsv0-6lgd38a",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-uxv5-rergmo7",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-yr06-o0jlytx",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-31wo-8hav2yj",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-05mx-4e788ju",
+            "label": "200%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-ko4e-o1i0jyb",
+            "label": "300%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-abzh-27rnnke",
+        "name": "[Player] Infection Chance",
+        "options": [
+          {
+            "id": "opt-uoto-v5oyf4r",
+            "label": "None (0%)",
+            "rank": "F"
+          },
+          {
+            "id": "opt-yqz9-ojfcgjo",
+            "label": "25%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-jzl1-xnwk96x",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-n5n3-fi6no65",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-h8un-uind9md",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-cvfy-04rl5fn",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-3dav-45tmqfz",
+            "label": "200%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-okug-w0qdnif",
+            "label": "300%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-a3a4-eg98acy",
+        "name": "[Player] Infection Rate",
+        "options": [
+          {
+            "id": "opt-wd72-3u9dzys",
+            "label": "None (0%)",
+            "rank": "F"
+          },
+          {
+            "id": "opt-45rz-5yf050w",
+            "label": "25%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-88bg-fotw6av",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-f3dl-sdtrkyd",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-pbda-0fb6plp",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-nzxn-883i2hf",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-5zn2-upmw6mv",
+            "label": "200%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-jqhz-cjn5ym3",
+            "label": "300%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-znv5-z9reg4m",
+        "name": "[Player] XP Multiplier",
+        "options": [
+          {
+            "id": "opt-zz6c-ae2tnj9",
+            "label": "500%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-jego-ev7v6gy",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-5il9-rbvw88g",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-nnhk-lapa1je",
+            "label": "175%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-z9si-23svsfh",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-w1fq-5dexvsz",
+            "label": "125%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-neyz-y0ec51j",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-k0y9-v3cy9mo",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-mt4o-4igve3f",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-y9ok-wrh2exs",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-9k3h-vbwee1q",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-jnek-nig1zof",
+        "name": "[Player] Skill Gain Amount",
+        "options": [
+          {
+            "id": "opt-uy30-le3yj9b",
+            "label": "5",
+            "rank": "F"
+          },
+          {
+            "id": "opt-l7u0-a0pkmmj",
+            "label": "4",
+            "rank": "F"
+          },
+          {
+            "id": "opt-52l7-5oist3d",
+            "label": "3",
+            "rank": "E"
+          },
+          {
+            "id": "opt-zg68-j4fj4wm",
+            "label": "2",
+            "rank": "E"
+          },
+          {
+            "id": "opt-lod1-d526nez",
+            "label": "1 (Default)",
+            "rank": "D"
+          }
+        ]
+      },
+      {
+        "id": "cat-7v49-cwxug7y",
+        "name": "[Player] Level Stat Bonus",
+        "options": [
+          {
+            "id": "opt-10ao-5xa795f",
+            "label": "Yes (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-9hdb-ukr5db1",
+            "label": "No",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-8k1b-tqzjzep",
+        "name": "[Player] New Player Buff (Newbie Coat)",
+        "options": [
+          {
+            "id": "opt-xk61-75cd0kw",
+            "label": "Yes (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-9wmi-1lh3z5h",
+            "label": "No",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-czkp-zmvq4d8",
+        "name": "[Player] Jar Refund",
+        "options": [
+          {
+            "id": "opt-vw68-t80rxzd",
+            "label": "100%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-goiu-panh4og",
+            "label": "90%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-n126-zeoldiw",
+            "label": "80%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-0zrm-zowpogx",
+            "label": "70%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-07rc-uruz9jq",
+            "label": "60% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-tjm4-27xa4dk",
+            "label": "50%",
+            "rank": "D"
+          },
+          {
+            "id": "opt-tqoy-wxyzvom",
+            "label": "40%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-zb5e-yvt5rr5",
+            "label": "30%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-ibhr-zvmhqu5",
+            "label": "20%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-itcg-mduo2bx",
+            "label": "10%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-xcet-vmjx739",
+            "label": "5%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-kt8r-1ik8t16",
+            "label": "None",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-e8i1-ri1b7yk",
+        "name": "[Player] Encumbrance Slots",
+        "options": [
+          {
+            "id": "opt-c67i-ad7f4sq",
+            "label": "Disabled",
+            "rank": "F"
+          },
+          {
+            "id": "opt-fehh-0a8homy",
+            "label": "Low",
+            "rank": "E"
+          },
+          {
+            "id": "opt-94ue-w9acnzc",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-7rx2-rcszutf",
+            "label": "High",
+            "rank": "C"
+          },
+          {
+            "id": "opt-39bi-95tljay",
+            "label": "Very High",
+            "rank": "B"
+          },
+          {
+            "id": "opt-r7mk-udp48bt",
+            "label": "Full",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-q96c-efmxbrm",
+        "name": "[Player] Death Penalty",
+        "options": [
+          {
+            "id": "opt-at74-d5nkiip",
+            "label": "None",
+            "rank": "F"
+          },
+          {
+            "id": "opt-sq21-2we5xnh",
+            "label": "XP Only (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-gouo-rm88ifw",
+            "label": "Injured",
+            "rank": "B"
+          },
+          {
+            "id": "opt-hhn7-96tk704",
+            "label": "Permanent Death",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-f3u0-w0a0xvz",
+        "name": "[Player] Lose on Death (Drop on Death)",
+        "options": [
+          {
+            "id": "opt-hsou-oj2iiku",
+            "label": "None",
+            "rank": "F"
+          },
+          {
+            "id": "opt-r0qd-sl9m5fv",
+            "label": "Backpack Only",
+            "rank": "D"
+          },
+          {
+            "id": "opt-xf1k-zx2ghwc",
+            "label": "Toolbelt Only",
+            "rank": "C"
+          },
+          {
+            "id": "opt-yl2s-96akeqn",
+            "label": "Equipment",
+            "rank": "C"
+          },
+          {
+            "id": "opt-3fyo-d1xmsbf",
+            "label": "Carried Only",
+            "rank": "B"
+          },
+          {
+            "id": "opt-xrd3-vehhaoi",
+            "label": "All",
+            "rank": "A"
+          },
+          {
+            "id": "opt-gaeb-l3uhkgk",
+            "label": "Delete All",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-veyi-k2t77im",
+        "name": "[Player] Death Loss Count",
+        "options": [
+          {
+            "id": "opt-ly09-8mmhdhl",
+            "label": "1-3 (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-4b3w-bfrg78e",
+            "label": "1-5",
+            "rank": "C"
+          },
+          {
+            "id": "opt-xv6a-ue48jqd",
+            "label": "3-5",
+            "rank": "C"
+          },
+          {
+            "id": "opt-gqng-iw5y4ja",
+            "label": "5-7",
+            "rank": "B"
+          },
+          {
+            "id": "opt-6p9i-t2ut2i5",
+            "label": "1-10",
+            "rank": "B"
+          },
+          {
+            "id": "opt-e1i4-5roiu5z",
+            "label": "5-10",
+            "rank": "B"
+          },
+          {
+            "id": "opt-ha3o-5e1ggkq",
+            "label": "7-10",
+            "rank": "A"
+          },
+          {
+            "id": "opt-u809-eyz2xmc",
+            "label": "10-15",
+            "rank": "A"
+          },
+          {
+            "id": "opt-1yvf-nbiubd7",
+            "label": "1-20",
+            "rank": "A"
+          },
+          {
+            "id": "opt-x84t-i915h56",
+            "label": "15-20",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-4x0m-5xgmis2",
+        "name": "[Player] Death Degradation",
+        "options": [
+          {
+            "id": "opt-30xx-2hcarre",
+            "label": "None (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-lger-l6sdfgj",
+            "label": "Durability",
+            "rank": "C"
+          },
+          {
+            "id": "opt-zjba-sgxpx2d",
+            "label": "Max Durability",
+            "rank": "B"
+          },
+          {
+            "id": "opt-f65i-i21r3cb",
+            "label": "Both",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-30ne-jb76ilm",
+        "name": "[Player] Death Degradation Amount",
+        "options": [
+          {
+            "id": "opt-73ju-6sn0ak4",
+            "label": "None",
+            "rank": "E"
+          },
+          {
+            "id": "opt-t706-77gydny",
+            "label": "5%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-ot6d-sd3z3u1",
+            "label": "10% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-d3u2-4l69q80",
+            "label": "15%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-ylbf-o2h3mje",
+            "label": "20%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-u0y6-ikkrke3",
+            "label": "25%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-nb6c-wi7m66x",
+        "name": "[Entities] Enemy Spawning",
+        "options": [
+          {
+            "id": "opt-59og-h4pwout",
+            "label": "No",
+            "rank": "F"
+          },
+          {
+            "id": "opt-h196-n2u33jr",
+            "label": "Yes (Default)",
+            "rank": "D"
+          }
+        ]
+      },
+      {
+        "id": "cat-uyc8-yq8xt0f",
+        "name": "[Entities] Enemy Density (Day)",
+        "options": [
+          {
+            "id": "opt-s2h6-7o8mg8d",
+            "label": "None",
+            "rank": "F"
+          },
+          {
+            "id": "opt-nyzi-4xikla6",
+            "label": "Low",
+            "rank": "E"
+          },
+          {
+            "id": "opt-vlcb-8au998f",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-nt1q-69tn0nq",
+            "label": "High",
+            "rank": "B"
+          },
+          {
+            "id": "opt-pns6-066c4jo",
+            "label": "Very High",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-fshd-nurjcn5",
+        "name": "[Entities] Enemy Density (Night)",
+        "options": [
+          {
+            "id": "opt-rez7-uakya3h",
+            "label": "None",
+            "rank": "F"
+          },
+          {
+            "id": "opt-u3m6-45fmtbw",
+            "label": "Low",
+            "rank": "E"
+          },
+          {
+            "id": "opt-qit6-5tc7sic",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-cei3-vd7597s",
+            "label": "High",
+            "rank": "B"
+          },
+          {
+            "id": "opt-uu0z-4hq0qxb",
+            "label": "Very High",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-j4q2-mf5bk6t",
+        "name": "[Entities] Animal Density (Day)",
+        "options": [
+          {
+            "id": "opt-8o8v-85eyzbh",
+            "label": "Very High",
+            "rank": "F"
+          },
+          {
+            "id": "opt-vk1v-g6f7mgi",
+            "label": "High",
+            "rank": "E"
+          },
+          {
+            "id": "opt-xk1j-5s2ge9g",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-phiv-4mbih6p",
+            "label": "Low",
+            "rank": "C"
+          },
+          {
+            "id": "opt-qhi7-c8x5ty9",
+            "label": "None",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-t2i0-bthrvjc",
+        "name": "[Entities] Animal Density (Night)",
+        "options": [
+          {
+            "id": "opt-wp5w-pxpnpei",
+            "label": "None",
+            "rank": "E"
+          },
+          {
+            "id": "opt-wlcj-twzltk0",
+            "label": "Low",
+            "rank": "E"
+          },
+          {
+            "id": "opt-b12x-cc0135c",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-hq4x-dtfk95a",
+            "label": "High",
+            "rank": "C"
+          },
+          {
+            "id": "opt-8865-m83u2a6",
+            "label": "Very High",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-gwb6-frqpylq",
+        "name": "[Entities] Enemy Respawn (Day)",
+        "options": [
+          {
+            "id": "opt-3298-8ig7y0l",
+            "label": "Disabled",
+            "rank": "F"
+          },
+          {
+            "id": "opt-5hvo-3tyu0b5",
+            "label": "Very Slow",
+            "rank": "E"
+          },
+          {
+            "id": "opt-m69c-80322mj",
+            "label": "Slow",
+            "rank": "E"
+          },
+          {
+            "id": "opt-4ndx-p1n6ra0",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-j0rw-gwerfik",
+            "label": "Fast",
+            "rank": "C"
+          },
+          {
+            "id": "opt-2l9o-ysxak8x",
+            "label": "Very Fast",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-79eo-353mg3o",
+        "name": "[Entities] Enemy Respawn (Night)",
+        "options": [
+          {
+            "id": "opt-gz1f-n4mon0g",
+            "label": "Disabled",
+            "rank": "F"
+          },
+          {
+            "id": "opt-p290-s81t7du",
+            "label": "Very Slow",
+            "rank": "E"
+          },
+          {
+            "id": "opt-ti2q-m2ye12m",
+            "label": "Slow",
+            "rank": "E"
+          },
+          {
+            "id": "opt-qb5w-nodvb8s",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-nicp-8dfinsc",
+            "label": "Fast",
+            "rank": "C"
+          },
+          {
+            "id": "opt-6d2s-44lfiin",
+            "label": "Very Fast",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-kysq-9i0uwlz",
+        "name": "[Entities] Biome Animal Respawn (Day)",
+        "options": [
+          {
+            "id": "opt-yvus-im2jjm7",
+            "label": "Very Fast",
+            "rank": "F"
+          },
+          {
+            "id": "opt-lg4a-09g7gay",
+            "label": "Fast",
+            "rank": "E"
+          },
+          {
+            "id": "opt-dwt4-qdcxuh2",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-wevo-qhnibni",
+            "label": "Slow",
+            "rank": "C"
+          },
+          {
+            "id": "opt-uhf6-2p2ra1q",
+            "label": "Very Slow",
+            "rank": "B"
+          },
+          {
+            "id": "opt-udqd-b6cv431",
+            "label": "Disabled",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-pknq-m5dot8y",
+        "name": "[Entities] Biome Animal Respawn (Night)",
+        "options": [
+          {
+            "id": "opt-yjj6-hw508wm",
+            "label": "Very Fast",
+            "rank": "F"
+          },
+          {
+            "id": "opt-e484-ng8s6qu",
+            "label": "Fast",
+            "rank": "E"
+          },
+          {
+            "id": "opt-km4g-tnn4xzs",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-sh30-vv7lb2g",
+            "label": "Slow",
+            "rank": "C"
+          },
+          {
+            "id": "opt-mvhp-1eadejd",
+            "label": "Very Slow",
+            "rank": "B"
+          },
+          {
+            "id": "opt-0bjv-ng14a0a",
+            "label": "Disabled",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-4w3c-w9hkqwa",
+        "name": "[Entities] Max Enemy Tier",
+        "options": [
+          {
+            "id": "opt-ayeq-9haj2zd",
+            "label": "Tier 1 (Basic)",
+            "rank": "F"
+          },
+          {
+            "id": "opt-06es-hc208bx",
+            "label": "Tier 2 (Feral)",
+            "rank": "E"
+          },
+          {
+            "id": "opt-6mba-q9u6qwr",
+            "label": "Tier 3 (Radiated)",
+            "rank": "E"
+          },
+          {
+            "id": "opt-chad-7ecnbt6",
+            "label": "Tier 4 (Infernal / Uncapped - Default)",
+            "rank": "D"
+          }
+        ]
+      },
+      {
+        "id": "cat-jwpy-ekuo95b",
+        "name": "[Entities] Zombie Day Speed",
+        "options": [
+          {
+            "id": "opt-d1ea-sbt2dmi",
+            "label": "Walk (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-zaf9-ifb7asp",
+            "label": "Jog",
+            "rank": "C"
+          },
+          {
+            "id": "opt-bbc2-5z3b3be",
+            "label": "Run",
+            "rank": "B"
+          },
+          {
+            "id": "opt-s68k-yhc0pn7",
+            "label": "Sprint",
+            "rank": "A"
+          },
+          {
+            "id": "opt-dovv-74iewsc",
+            "label": "Nightmare",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-ejz2-aqso12l",
+        "name": "[Entities] Zombie Night Speed",
+        "options": [
+          {
+            "id": "opt-s3ht-ypkvp4o",
+            "label": "Walk",
+            "rank": "F"
+          },
+          {
+            "id": "opt-mfnk-1dcofs0",
+            "label": "Jog",
+            "rank": "F"
+          },
+          {
+            "id": "opt-wk9k-tsdnwfg",
+            "label": "Run",
+            "rank": "E"
+          },
+          {
+            "id": "opt-c728-w0701ue",
+            "label": "Sprint (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-ssgl-t06rjw5",
+            "label": "Nightmare",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-3mjr-33wm9py",
+        "name": "[Entities] Zombie Feral Speed",
+        "options": [
+          {
+            "id": "opt-b9xj-0v99cz1",
+            "label": "Walk",
+            "rank": "F"
+          },
+          {
+            "id": "opt-vusi-tszqpgo",
+            "label": "Jog",
+            "rank": "F"
+          },
+          {
+            "id": "opt-b3vw-9pukq9g",
+            "label": "Run",
+            "rank": "E"
+          },
+          {
+            "id": "opt-xgs7-674qak4",
+            "label": "Sprint (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-6u6c-qx3egfg",
+            "label": "Nightmare",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-kh5k-xc8u2zh",
+        "name": "[Entities] Zombie Blood Moon Speed",
+        "options": [
+          {
+            "id": "opt-pjdx-lj0u0hj",
+            "label": "Walk",
+            "rank": "F"
+          },
+          {
+            "id": "opt-jop3-hlu8p3f",
+            "label": "Jog",
+            "rank": "F"
+          },
+          {
+            "id": "opt-4aks-5ka55pl",
+            "label": "Run",
+            "rank": "E"
+          },
+          {
+            "id": "opt-axdz-hmm1qwf",
+            "label": "Sprint (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-jv4u-in1hfz8",
+            "label": "Nightmare",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-e1bg-wf98nyr",
+        "name": "[Entities] Zombie Feral Sense",
+        "options": [
+          {
+            "id": "opt-9yet-v4uk09f",
+            "label": "Off (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-1voq-wmr7548",
+            "label": "Night",
+            "rank": "C"
+          },
+          {
+            "id": "opt-ai9x-myqim3s",
+            "label": "Day",
+            "rank": "B"
+          },
+          {
+            "id": "opt-qk3n-mjfgfwl",
+            "label": "All",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-1bhf-tiw01u8",
+        "name": "[Entities] AI Smell Mode",
+        "options": [
+          {
+            "id": "opt-ilpb-mc7omsy",
+            "label": "Off",
+            "rank": "F"
+          },
+          {
+            "id": "opt-c5gq-qoyqhfe",
+            "label": "Walk",
+            "rank": "E"
+          },
+          {
+            "id": "opt-o8lj-hzajk0p",
+            "label": "Jog",
+            "rank": "E"
+          },
+          {
+            "id": "opt-ajcg-e2c82fz",
+            "label": "Run (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-qu3t-d9cwod4",
+            "label": "Sprint",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-g473-9povyx2",
+        "name": "[Entities] Zombie Rage",
+        "options": [
+          {
+            "id": "opt-swfg-v5imx87",
+            "label": "None",
+            "rank": "F"
+          },
+          {
+            "id": "opt-08li-q0wo19d",
+            "label": "25%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-z68l-t0qsjrx",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-bw7q-g66mv2w",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-p447-8cgg1el",
+            "label": "200%",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-7k1p-21qmutr",
+        "name": "[Entities] Zombie Digging",
+        "options": [
+          {
+            "id": "opt-kaf0-zo4s46n",
+            "label": "No",
+            "rank": "F"
+          },
+          {
+            "id": "opt-r3fj-hpo5288",
+            "label": "Yes (Default)",
+            "rank": "D"
+          }
+        ]
+      },
+      {
+        "id": "cat-4er8-skxnpf3",
+        "name": "[Entities] Zombies Eat Animals",
+        "options": [
+          {
+            "id": "opt-1jaf-e9r40bn",
+            "label": "No",
+            "rank": "E"
+          },
+          {
+            "id": "opt-nj2c-rdjg3sh",
+            "label": "Yes (Default)",
+            "rank": "D"
+          }
+        ]
+      },
+      {
+        "id": "cat-sues-dmfysdw",
+        "name": "[Entities] Headshot Mode",
+        "options": [
+          {
+            "id": "opt-2yf4-48eopc7",
+            "label": "Normal (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-zj5u-kqfjkkn",
+            "label": "Headshot Only",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-dhxx-qbv3c2s",
+        "name": "[World] 24 Hour Cycle",
+        "options": [
+          {
+            "id": "opt-nzsj-kfwfapm",
+            "label": "120 Minutes",
+            "rank": "F"
+          },
+          {
+            "id": "opt-r4gc-xjin8t5",
+            "label": "90 Minutes",
+            "rank": "E"
+          },
+          {
+            "id": "opt-pcad-w0hgf30",
+            "label": "60 Minutes (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-nodg-8db91cq",
+            "label": "50 Minutes",
+            "rank": "C"
+          },
+          {
+            "id": "opt-oz26-qvar6ki",
+            "label": "40 Minutes",
+            "rank": "C"
+          },
+          {
+            "id": "opt-ebct-toqwoqd",
+            "label": "30 Minutes",
+            "rank": "B"
+          },
+          {
+            "id": "opt-dtpr-oihcks6",
+            "label": "20 Minutes",
+            "rank": "A"
+          },
+          {
+            "id": "opt-a2b1-o7cf2p6",
+            "label": "10 Minutes",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-87d6-andpvvg",
+        "name": "[World] Daylight Length",
+        "options": [
+          {
+            "id": "opt-wm8k-t5n9nju",
+            "label": "18 Hours (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-1yjd-zo7ore3",
+            "label": "16 Hours",
+            "rank": "C"
+          },
+          {
+            "id": "opt-fnre-95xy5n7",
+            "label": "14 Hours",
+            "rank": "B"
+          },
+          {
+            "id": "opt-i5wz-llgowog",
+            "label": "12 Hours",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-tp79-162dhvp",
+        "name": "[World] Blood Moon Frequency",
+        "options": [
+          {
+            "id": "opt-p7i1-7jf5bqf",
+            "label": "Disabled",
+            "rank": "F"
+          },
+          {
+            "id": "opt-96cd-78hc3bj",
+            "label": "30 Days",
+            "rank": "F"
+          },
+          {
+            "id": "opt-hhx8-yqauaz0",
+            "label": "21 Days",
+            "rank": "E"
+          },
+          {
+            "id": "opt-2sbd-wnhjx02",
+            "label": "14 Days",
+            "rank": "E"
+          },
+          {
+            "id": "opt-93at-pesae1i",
+            "label": "10 Days",
+            "rank": "E"
+          },
+          {
+            "id": "opt-e4dj-qklcjdf",
+            "label": "7 Days (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-5rnx-u59mu47",
+            "label": "5 Days",
+            "rank": "C"
+          },
+          {
+            "id": "opt-t5sg-so3jzzw",
+            "label": "3 Days",
+            "rank": "B"
+          },
+          {
+            "id": "opt-r01a-tqm0jun",
+            "label": "1 Day (Every Night)",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-ii4u-hm45r1d",
+        "name": "[World] Blood Moon Range",
+        "options": [
+          {
+            "id": "opt-zoqi-wcnhltj",
+            "label": "0 Days (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-hzr5-5lkxaow",
+            "label": "1 Day",
+            "rank": "C"
+          },
+          {
+            "id": "opt-g12z-ybgwu2u",
+            "label": "2 Days",
+            "rank": "C"
+          },
+          {
+            "id": "opt-q56e-yovrytr",
+            "label": "3 Days",
+            "rank": "B"
+          },
+          {
+            "id": "opt-znkj-5aktbmd",
+            "label": "5 Days",
+            "rank": "B"
+          },
+          {
+            "id": "opt-a876-x0c6btb",
+            "label": "7 Days",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-7m0k-iaflyy8",
+        "name": "[World] Blood Moon Warning",
+        "options": [
+          {
+            "id": "opt-71x3-i2kkp61",
+            "label": "Morning (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-lsfw-29n7a99",
+            "label": "Evening",
+            "rank": "C"
+          },
+          {
+            "id": "opt-7w52-7ppp3gb",
+            "label": "Disabled",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-bglv-5c2kg6e",
+        "name": "[World] Blood Moon Count",
+        "options": [
+          {
+            "id": "opt-go4y-c8pkvzt",
+            "label": "4 Zombies",
+            "rank": "F"
+          },
+          {
+            "id": "opt-2wya-a8rlg53",
+            "label": "8 Zombies (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-mgnw-2ky7sn9",
+            "label": "12 Zombies",
+            "rank": "C"
+          },
+          {
+            "id": "opt-t1ze-1kodsoo",
+            "label": "16 Zombies",
+            "rank": "B"
+          },
+          {
+            "id": "opt-ofgw-fyhbo7g",
+            "label": "24 Zombies",
+            "rank": "B"
+          },
+          {
+            "id": "opt-glle-y13026i",
+            "label": "32 Zombies",
+            "rank": "A"
+          },
+          {
+            "id": "opt-dixn-uk7tc6y",
+            "label": "64 Zombies",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-p8sl-4hbarw6",
+        "name": "[World] Storm Frequency",
+        "options": [
+          {
+            "id": "opt-048c-33uvzhj",
+            "label": "Disabled",
+            "rank": "F"
+          },
+          {
+            "id": "opt-oqam-5nvphmu",
+            "label": "25%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-yscz-mcp9we9",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-ccvw-yonjzch",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-g5v0-h6y255f",
+            "label": "200%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-n9f7-ww2kr9k",
+            "label": "300%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-cp6v-vj0v0lb",
+            "label": "500%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-4im4-rkqq16m",
+        "name": "[World] Storm Warning",
+        "options": [
+          {
+            "id": "opt-oy7l-lmxb6uv",
+            "label": "Yes (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-pa42-783q8x9",
+            "label": "No",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-p00s-d12dvo7",
+        "name": "[World] Temperature Survival",
+        "options": [
+          {
+            "id": "opt-u682-ziomm9k",
+            "label": "No",
+            "rank": "E"
+          },
+          {
+            "id": "opt-xz4k-ajb3php",
+            "label": "Yes (Default)",
+            "rank": "D"
+          }
+        ]
+      },
+      {
+        "id": "cat-mq1t-blbh3k6",
+        "name": "[World] Biome Progression",
+        "options": [
+          {
+            "id": "opt-h34e-itk81wy",
+            "label": "No",
+            "rank": "F"
+          },
+          {
+            "id": "opt-qfj7-gjoayav",
+            "label": "Yes (Default)",
+            "rank": "D"
+          }
+        ]
+      },
+      {
+        "id": "cat-8fom-w9aouy8",
+        "name": "[World] Max Tech Type",
+        "options": [
+          {
+            "id": "opt-xcey-5lbj68g",
+            "label": "Tech 3 (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-fd66-ffw32xt",
+            "label": "Tech 2",
+            "rank": "C"
+          },
+          {
+            "id": "opt-p2q0-j5idun2",
+            "label": "Tech 1",
+            "rank": "A"
+          },
+          {
+            "id": "opt-smn1-bk2q62a",
+            "label": "Tech 0 (Primitive)",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-g6os-bdtq3ft",
+        "name": "[World] Workstations in the Wild",
+        "options": [
+          {
+            "id": "opt-8xza-6lqzovp",
+            "label": "100%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-49ch-gcg0tla",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-vg43-vgv2jmf",
+            "label": "50% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-h68e-pe44lfz",
+            "label": "25%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-t3mo-worn4bi",
+            "label": "0%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-aguq-ruhyw04",
+        "name": "[World] Air Drops",
+        "options": [
+          {
+            "id": "opt-edsm-17qyurd",
+            "label": "Everyday",
+            "rank": "F"
+          },
+          {
+            "id": "opt-0gio-1d62t7a",
+            "label": "Every 3 Days (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-bwa5-zb51obd",
+            "label": "Every 7 Days",
+            "rank": "C"
+          },
+          {
+            "id": "opt-bqrn-3o7s0rw",
+            "label": "Disabled",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-sq0a-2rgmz16",
+        "name": "[World] Allow Map",
+        "options": [
+          {
+            "id": "opt-c18z-80oqlo8",
+            "label": "Yes (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-4w02-50vd4u7",
+            "label": "No",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-espx-o9h6viv",
+        "name": "[World] Allow Compass",
+        "options": [
+          {
+            "id": "opt-lsn6-wss1470",
+            "label": "Yes (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-xj83-090rkgo",
+            "label": "No",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-dngy-kgrq49o",
+        "name": "[Resources] Loot Abundance",
+        "options": [
+          {
+            "id": "opt-ojwi-x2y8znl",
+            "label": "500%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-yebr-ywoce24",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-9he8-0vden2s",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-8hqd-8mqrj8t",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-hdit-hsghwon",
+            "label": "125%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-5ckh-gl1w5p6",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-v6vm-s6so43y",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-0g1u-s086xin",
+            "label": "65%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-631u-eaxqvqw",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-gzdq-i6koy9l",
+            "label": "35%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-srkx-33bm42x",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-9w1k-d10g0xy",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-fkqd-2yx1pto",
+        "name": "[Resources] Food Loot Abundance",
+        "options": [
+          {
+            "id": "opt-5eqo-2go7nj5",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-ducp-wimlvam",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-4hdz-k3u047f",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-tpx8-witvsev",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-iz23-c1ymyk4",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-iovl-0io7p26",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-v5t2-q3upo92",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-odif-lkzxq4f",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-8zct-upj35z0",
+        "name": "[Resources] Medical Loot Abundance",
+        "options": [
+          {
+            "id": "opt-j1a4-zrs27ma",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-utxi-8oj83tu",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-jxtt-7yyqvtu",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-tsol-hn3e4le",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-6pdh-36ygm57",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-q79c-hoewf5h",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-v0br-v3umbcm",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-70om-n5q0fja",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-wbkn-w0wrjv2",
+        "name": "[Resources] Melee Loot Abundance",
+        "options": [
+          {
+            "id": "opt-1026-4u3z98r",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-tewv-sd49slo",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-kal5-a5gakoe",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-jg0a-r1qgazi",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-8sqv-g3ujou4",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-fvex-rpke06p",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-4j2i-w41zos7",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-cboq-o8lclry",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-lqt5-3fcwh49",
+        "name": "[Resources] Ranged Loot Abundance",
+        "options": [
+          {
+            "id": "opt-g9id-1mywoim",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-ezoc-qtur5q5",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-nfct-uaossb7",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-crhq-vm39cdo",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-dapy-zoz5cat",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-pa4e-cwt31n0",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-ptrk-g39xv7v",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-p6zb-9jbfngo",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-9lk1-g5qf32p",
+        "name": "[Resources] Armor Loot Abundance",
+        "options": [
+          {
+            "id": "opt-yr07-jfvw5qe",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-hw8m-hso8x1g",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-7pdc-1bt4rtx",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-d0c7-g982jli",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-k4ga-8jg8yt5",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-trhn-w8b0rpn",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-si1e-g7x3ask",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-sqqr-jh2cyoh",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-1ib3-lk5rmdp",
+        "name": "[Resources] Ammo Loot Abundance",
+        "options": [
+          {
+            "id": "opt-es67-e3nu5qq",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-oj14-vffham9",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-f46h-61a0f2h",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-xkaq-382zo0b",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-gkum-b9yqdpy",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-w3c3-qad38xo",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-gpuu-v3dfvdb",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-2ogz-l2xj4na",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-tqik-25pnj0z",
+        "name": "[Resources] Magazines/Books Loot Abundance",
+        "options": [
+          {
+            "id": "opt-arzm-e83z6e0",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-y373-yhuutn4",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-hv93-4h296yj",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-218w-pu7e6nf",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-gpd6-dj7qvyi",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-wr7o-46c4ewe",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-vkdr-fkkq51b",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-k69w-8rimq0p",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-np5k-yg8pz6x",
+        "name": "[Resources] Materials Loot Abundance",
+        "options": [
+          {
+            "id": "opt-ya29-rnxbrth",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-ekvd-e76t0bz",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-4bkt-vlkgc8o",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-hx0b-qpbit11",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-e9zn-vgfnd8h",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-6bp5-c8lcmt5",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-cnvz-07vhw1v",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-739f-ri8p6u8",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-aqnb-sef5iz0",
+        "name": "[Resources] Max Loot Quality",
+        "options": [
+          {
+            "id": "opt-tgkl-u6pkphu",
+            "label": "Quality 6 (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-kj8w-8mi2ii3",
+            "label": "Quality 5",
+            "rank": "C"
+          },
+          {
+            "id": "opt-1efe-3begooy",
+            "label": "Quality 4",
+            "rank": "C"
+          },
+          {
+            "id": "opt-0vkq-a8sc67w",
+            "label": "Quality 3",
+            "rank": "B"
+          },
+          {
+            "id": "opt-dr2c-bbm7ydr",
+            "label": "Quality 2",
+            "rank": "A"
+          },
+          {
+            "id": "opt-mdy4-vonvem9",
+            "label": "Quality 1",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-k0qa-jh2g8xb",
+        "name": "[Resources] Global Loot Stage",
+        "options": [
+          {
+            "id": "opt-amvh-wdw6v1x",
+            "label": "Very High",
+            "rank": "F"
+          },
+          {
+            "id": "opt-bume-fuiobki",
+            "label": "High",
+            "rank": "E"
+          },
+          {
+            "id": "opt-f4n8-7trp9xy",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-uolk-laaolva",
+            "label": "Low",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-0sh4-gvnrw92",
+        "name": "[Resources] Biome Loot Stage",
+        "options": [
+          {
+            "id": "opt-d9yz-bbks0fz",
+            "label": "Very High",
+            "rank": "F"
+          },
+          {
+            "id": "opt-hnk8-dnroga3",
+            "label": "High",
+            "rank": "E"
+          },
+          {
+            "id": "opt-p9m9-95dgd1n",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-xlvh-mql1gzc",
+            "label": "Low",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-zxru-scrmqk0",
+        "name": "[Resources] Loot Respawn Days",
+        "options": [
+          {
+            "id": "opt-ufa8-6iab7bb",
+            "label": "5 Days",
+            "rank": "E"
+          },
+          {
+            "id": "opt-79om-6znq32h",
+            "label": "7 Days (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-hmkk-2rl5flz",
+            "label": "10 Days",
+            "rank": "D"
+          },
+          {
+            "id": "opt-xzei-4g67mjf",
+            "label": "15 Days",
+            "rank": "C"
+          },
+          {
+            "id": "opt-nuap-g3vwvqk",
+            "label": "20 Days",
+            "rank": "C"
+          },
+          {
+            "id": "opt-opv7-heg335e",
+            "label": "30 Days",
+            "rank": "B"
+          },
+          {
+            "id": "opt-1lbx-g515xkn",
+            "label": "40 Days",
+            "rank": "B"
+          },
+          {
+            "id": "opt-84yz-8cl1e4m",
+            "label": "50 Days",
+            "rank": "A"
+          },
+          {
+            "id": "opt-6arv-a213adi",
+            "label": "Disabled",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-aqx9-s0z26wb",
+        "name": "[Resources] Loot Timer (Search Speed)",
+        "options": [
+          {
+            "id": "opt-awll-q844sq0",
+            "label": "25%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-5u05-gk0kfxs",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-qsjz-er2zpow",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-bqm0-3xpr1id",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-tmcn-800oset",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-va4e-61iyx8b",
+            "label": "200%",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-d1cn-5o70vxd",
+        "name": "[Resources] Loot Bag Drop Rate",
+        "options": [
+          {
+            "id": "opt-uqf7-0a7n4k1",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-3nhx-3k7tr0z",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-l53t-h7l2vf8",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-m8an-fn82vmu",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-6mwx-55fxaf2",
+            "label": "50%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-csg0-43oshts",
+            "label": "25%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-trsx-da4yy4v",
+            "label": "None",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-kjxl-pfyh2yv",
+        "name": "[Resources] Mining Yield",
+        "options": [
+          {
+            "id": "opt-ltry-vse9awy",
+            "label": "500%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-nx3v-dvei6rs",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-xga8-yntxqsr",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-s20z-ksg4ohp",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-4zrc-zi6o1sr",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-0tj7-2lkau4t",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-snlc-wksmnpk",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-dpqr-87tslkw",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-y336-cvvcq5c",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-pgz0-5akrrjt",
+        "name": "[Resources] Resource Yield",
+        "options": [
+          {
+            "id": "opt-tarl-ugv2x5k",
+            "label": "500%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-fy6a-kvolpx9",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-s1p1-xccoo3o",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-0ace-rg2oyr7",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-utyn-k8wn29f",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-xn0e-w10tqwq",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-g211-fflufam",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-xa73-t7a7qmv",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-6pj6-12hqpgt",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-ivd0-umvzm67",
+        "name": "[Resources] Crop Yield",
+        "options": [
+          {
+            "id": "opt-38ff-ppc07a7",
+            "label": "500%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-08nh-c1ow0jj",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-ehlw-2jxinbs",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-4huo-rw41gyu",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-jqob-4mmvvpb",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-9o2s-ejj2sbs",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-eby5-ck5xp22",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-s8jw-y4f7bek",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-lqek-rqjq6vm",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-guud-rlidfac",
+        "name": "[Resources] Seed Drop Rate",
+        "options": [
+          {
+            "id": "opt-8lzb-wd2nqg3",
+            "label": "500%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-olk4-7vncr2l",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-z0bf-24atrpa",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-z4hw-eyb7rhe",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-314r-43bvp4y",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-pwyt-ctb0dw6",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-jjw3-fzmvnd9",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-tudj-zei6ctx",
+            "label": "25%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-qnq9-vbma2is",
+            "label": "None",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-ko1a-d0hfrsh",
+        "name": "[Resources] Crop Growth Speed",
+        "options": [
+          {
+            "id": "opt-khx2-dprfkew",
+            "label": "500%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-rlxp-edqd5l5",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-nx89-t8c6fmu",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-5tpx-5eu972a",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-pvg4-pg9p1qe",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-1e6m-2jw83jy",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-c8df-4cel6ke",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-mkap-lb2b87h",
+            "label": "25%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-xtzi-suscvy1",
+        "name": "[Crafting] Crafting Progression",
+        "options": [
+          {
+            "id": "opt-3aoi-dqsi2r1",
+            "label": "All Unlocked",
+            "rank": "F"
+          },
+          {
+            "id": "opt-tfny-bnjfpod",
+            "label": "Classic / Learn by Doing",
+            "rank": "E"
+          },
+          {
+            "id": "opt-ppw7-ozko1ak",
+            "label": "Magazines (Default)",
+            "rank": "D"
+          }
+        ]
+      },
+      {
+        "id": "cat-mmb9-rgctybw",
+        "name": "[Crafting] Crafting Timer",
+        "options": [
+          {
+            "id": "opt-bvkj-dsdtpma",
+            "label": "Instant (0%)",
+            "rank": "F"
+          },
+          {
+            "id": "opt-jupu-meqoid8",
+            "label": "25%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-b3ei-zkdjd07",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-auwk-h9ndg47",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-dsjf-fi6h578",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-o6y6-2swd0l8",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-href-20r9b5h",
+            "label": "200%",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-lqug-5frlj46",
+        "name": "[Crafting] Crafting Yield",
+        "options": [
+          {
+            "id": "opt-kl2v-vqsr8d8",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-a3zt-pv5fney",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-0l2r-idw72us",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-msdf-8z7hxk3",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-go2t-zanqn2s",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-pn67-xqtvujo",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-7rve-793w1tp",
+            "label": "25%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-t8oq-q7n1joq",
+        "name": "[Crafting] Crafting Cost",
+        "options": [
+          {
+            "id": "opt-88fq-oxdkjfa",
+            "label": "25%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-uniw-5f28mxh",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-t1n0-mbixnj1",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-96w3-k1jrgw4",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-gb0q-ql1avbt",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-nw5u-x39anqq",
+            "label": "200%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-ei1t-wxtpxg3",
+            "label": "300%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-pnk9-0gla88d",
+        "name": "[Crafting] Backpack Crafting",
+        "options": [
+          {
+            "id": "opt-hyjr-aicgluf",
+            "label": "Yes (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-iu7u-mbqpxss",
+            "label": "No",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-7iqv-q0ag1ei",
+        "name": "[Crafting] Item Degradation",
+        "options": [
+          {
+            "id": "opt-mhia-hpp06p9",
+            "label": "Off",
+            "rank": "F"
+          },
+          {
+            "id": "opt-amyl-jdiw5km",
+            "label": "Low",
+            "rank": "E"
+          },
+          {
+            "id": "opt-2xdt-bh0zpj9",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-b9bc-k56blk1",
+            "label": "High",
+            "rank": "C"
+          },
+          {
+            "id": "opt-2k97-278j8n7",
+            "label": "Very High",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-oqh1-j60t8w0",
+        "name": "[Crafting] Repair Method",
+        "options": [
+          {
+            "id": "opt-24pv-dhlr5d0",
+            "label": "Raw Materials",
+            "rank": "E"
+          },
+          {
+            "id": "opt-ga3r-z80ckc6",
+            "label": "Repair Kits (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-75au-02w3c7n",
+            "label": "Disabled",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-maei-oefmiex",
+        "name": "[Crafting] Dew Collector Time",
+        "options": [
+          {
+            "id": "opt-oxt0-6v2kp3m",
+            "label": "50%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-5wip-hrxdea5",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-yz3l-me782ng",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-lx0b-rrgg902",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-tnpq-v47zsgy",
+            "label": "200%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-hgyh-hznxgfs",
+            "label": "300%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-gwzq-ex20otx",
+        "name": "[Crafting] Dew Collector Yield",
+        "options": [
+          {
+            "id": "opt-8vy3-xjtidkf",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-h7sm-l51anlu",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-1tyh-eq7wdfp",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-wxp9-8wvsz3u",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-k34i-rng2b1t",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-42ne-qljsubi",
+            "label": "50%",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-dnqs-nr9g6es",
+        "name": "[Crafting] Apiary Time",
+        "options": [
+          {
+            "id": "opt-tlo7-py7df3c",
+            "label": "50%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-sqgt-uijp7tx",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-d70x-i6ttusq",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-l82c-pnxqmde",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-92ik-fyn1r9r",
+            "label": "200%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-54xd-f0yi0w8",
+            "label": "300%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-o6j7-ubm8it3",
+        "name": "[Crafting] Apiary Yield",
+        "options": [
+          {
+            "id": "opt-iix4-x5a0h9a",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-nnff-5j9c33s",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-98np-7v3n349",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-36go-yry2x8r",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-hrr1-4c5u8ni",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-2s46-fvdh4ja",
+            "label": "50%",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-k21n-11mc10y",
+        "name": "[Crafting] Chicken Coop Time",
+        "options": [
+          {
+            "id": "opt-alsk-28g3f63",
+            "label": "50%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-g88g-egals5b",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-xjs5-lloqppy",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-580w-43cp9vj",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-ae6l-tafizwq",
+            "label": "200%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-kjki-5h50iv7",
+            "label": "300%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-ivh2-h4wyyim",
+        "name": "[Crafting] Chicken Coop Yield",
+        "options": [
+          {
+            "id": "opt-0ok0-nytnie4",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-kz7i-6yvoy8g",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-sj1r-z4byf4o",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-sz08-d6bqrkt",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-gtzy-zck1dny",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-z4zs-rt5toap",
+            "label": "50%",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-rkua-gza3rwh",
+        "name": "[Crafting] Chicken Coop Input",
+        "options": [
+          {
+            "id": "opt-yxaf-xeef0mx",
+            "label": "50%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-z4an-24nvrq6",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-kc7o-oq55l2q",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-sxwd-0yj5tc1",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-azw5-90g2bn1",
+            "label": "200%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-xoyh-g503z1k",
+            "label": "300%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-alqi-69bdoif",
+        "name": "[Traders] Trading Enabled",
+        "options": [
+          {
+            "id": "opt-hvut-y0s3jgt",
+            "label": "Yes (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-b3vt-lnd1lvv",
+            "label": "No",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-wvpf-r1124rp",
+        "name": "[Traders] Trader Protection",
+        "options": [
+          {
+            "id": "opt-dre0-7dudh2r",
+            "label": "Yes (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-ety3-ookvi78",
+            "label": "No",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-de8x-odjk4fe",
+        "name": "[Traders] Trader Hours",
+        "options": [
+          {
+            "id": "opt-avfu-4esgacb",
+            "label": "24/7",
+            "rank": "E"
+          },
+          {
+            "id": "opt-rkba-4tdgua9",
+            "label": "Default (06:05-21:50)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-x9uf-w05l4p9",
+            "label": "BM Closed",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-davu-5tj6778",
+        "name": "[Traders] Trader Item Count",
+        "options": [
+          {
+            "id": "opt-7idn-25s213z",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-7exe-bxam2hy",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-ftzj-8mz08rr",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-3j00-p0ckuay",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-wmbe-zv0091w",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-f0j0-tu9tole",
+            "label": "50%",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-i71v-y4yxiuv",
+        "name": "[Traders] Trader Restock Frequency",
+        "options": [
+          {
+            "id": "opt-8jp7-45d9mao",
+            "label": "50%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-sy9m-g7m9sqj",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-gw8e-aasygye",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-2mqm-kr0gj5g",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-fvjk-qr0wm6y",
+            "label": "200%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-nhg2-3xcq6sj",
+            "label": "300%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-0wbw-ls96yfd",
+        "name": "[Traders] Buy Price",
+        "options": [
+          {
+            "id": "opt-nbne-um0o15m",
+            "label": "25%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-qsbz-fq03tur",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-h7b6-75bmp1w",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-1vvo-irnqmv3",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-nruw-jlaxsiu",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-y1ga-oy52d4q",
+            "label": "200%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-ltt7-jh54m7a",
+            "label": "300%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-4gun-eusaebs",
+        "name": "[Traders] Sell Price",
+        "options": [
+          {
+            "id": "opt-wluj-gdrboes",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-2ou7-2l4rxgb",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-wrfo-ut4i7rk",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-csei-wcvfx36",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-3a9e-2z1uhba",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-ie61-399mjvk",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-xt4o-a7aez6h",
+            "label": "25%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-yxfk-edorzt7",
+        "name": "[Traders] Trader Buy Limit",
+        "options": [
+          {
+            "id": "opt-2pwz-xjm8zlk",
+            "label": "Unlimited",
+            "rank": "F"
+          },
+          {
+            "id": "opt-ydcw-8epygh6",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-r8sw-39nq444",
+            "label": "Low",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-jlhx-sv5ywlm",
+        "name": "[Traders] Vending Enabled",
+        "options": [
+          {
+            "id": "opt-9par-zlo6882",
+            "label": "Yes (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-35h2-fovdzi0",
+            "label": "No",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-42ra-fpmae8l",
+        "name": "[Traders] Vending Reset",
+        "options": [
+          {
+            "id": "opt-nsd7-ddacjny",
+            "label": "50%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-g7p3-asazto0",
+            "label": "75%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-rqli-0zstwmm",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-ilpf-s82mhky",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-equb-8pai0zs",
+            "label": "200%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-z7b4-ieoajl9",
+            "label": "300%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-4m77-vmvt8nw",
+        "name": "[Tasks] Quests (POI Quests)",
+        "options": [
+          {
+            "id": "opt-aztn-zn2ptov",
+            "label": "Yes (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-h2hh-70u5l7y",
+            "label": "No",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-86pg-g4jqhqh",
+        "name": "[Tasks] Quests Per Day (Tier Limit)",
+        "options": [
+          {
+            "id": "opt-awah-a3jdjl1",
+            "label": "Unlimited",
+            "rank": "F"
+          },
+          {
+            "id": "opt-qlkw-ykpcraa",
+            "label": "10",
+            "rank": "E"
+          },
+          {
+            "id": "opt-4o1j-wsps4yn",
+            "label": "5",
+            "rank": "E"
+          },
+          {
+            "id": "opt-1cub-x1ort6m",
+            "label": "3 (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-mfhc-30jqsaf",
+            "label": "2",
+            "rank": "C"
+          },
+          {
+            "id": "opt-zdpf-jjzwcsz",
+            "label": "1",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-e9zt-3vt9wf3",
+        "name": "[Tasks] Quest Rewards Scaling",
+        "options": [
+          {
+            "id": "opt-e6f7-yn6f8mc",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-j9yj-fnarscj",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-uiow-lzc1tpo",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-k56g-eou18cx",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-cfiu-ky0ki9n",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-qeoj-eg5y40o",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-un9i-0i5jfq2",
+            "label": "25%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-nu6q-k33m32z",
+        "name": "[Tasks] Quest XP Scaling",
+        "options": [
+          {
+            "id": "opt-f3j1-s2satks",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-l5zu-o619uqk",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-j6t6-lt4ccsh",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-pkgi-yekskp3",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-hr2k-8pnq7ii",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-cj7h-fxz12e1",
+            "label": "50%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-hg9o-v5vl40r",
+            "label": "25%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-0cy8-yb27g15",
+        "name": "[Tasks] Intro Challenges",
+        "options": [
+          {
+            "id": "opt-ek15-t12hnzl",
+            "label": "Yes (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-cw17-q234rqj",
+            "label": "No",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-r3ik-0qs3pi3",
+        "name": "[Tasks] Intro Quests",
+        "options": [
+          {
+            "id": "opt-9a6l-b0hbw8e",
+            "label": "Yes (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-965q-jmlsac4",
+            "label": "No",
+            "rank": "C"
+          }
+        ]
+      },
+      {
+        "id": "cat-y0rh-idrz5rr",
+        "name": "[Tasks] Base Skill Points",
+        "options": [
+          {
+            "id": "opt-s370-94qk3te",
+            "label": "50",
+            "rank": "F"
+          },
+          {
+            "id": "opt-rg22-gxf2z9j",
+            "label": "25",
+            "rank": "F"
+          },
+          {
+            "id": "opt-701y-trrcm7c",
+            "label": "15",
+            "rank": "E"
+          },
+          {
+            "id": "opt-mmu1-deau9m5",
+            "label": "8",
+            "rank": "E"
+          },
+          {
+            "id": "opt-u9pu-7zu73dw",
+            "label": "4 (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-2yt5-5a38vs3",
+            "label": "2",
+            "rank": "C"
+          },
+          {
+            "id": "opt-r0qg-mz5ojoy",
+            "label": "0",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-4avx-1awvyc4",
+        "name": "[Tasks] Trade Routes",
+        "options": [
+          {
+            "id": "opt-6dc5-wwc6h1i",
+            "label": "Yes (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-1850-7dhpwg5",
+            "label": "No",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-e0h4-wfijwoc",
+        "name": "[Misc] Stack Size Multiplier",
+        "options": [
+          {
+            "id": "opt-seq6-jvax368",
+            "label": "Up to 30,000",
+            "rank": "F"
+          },
+          {
+            "id": "opt-7lww-arxxvg0",
+            "label": "10x",
+            "rank": "F"
+          },
+          {
+            "id": "opt-kebq-xq3s1xa",
+            "label": "5x",
+            "rank": "E"
+          },
+          {
+            "id": "opt-icy2-5j4k14u",
+            "label": "2x",
+            "rank": "E"
+          },
+          {
+            "id": "opt-k6aw-4d67a65",
+            "label": "1x (Default)",
+            "rank": "D"
+          }
+        ]
+      },
+      {
+        "id": "cat-5uf7-8jtfjnm",
+        "name": "[Misc] Vehicle Fuel Usage",
+        "options": [
+          {
+            "id": "opt-o91t-xuqrs2d",
+            "label": "0%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-9mfx-cp0378f",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-wrfd-7l9o6ql",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-dk37-795jkjd",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-0081-4w4ko1s",
+            "label": "200%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-1ycl-d4eujnp",
+            "label": "300%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-33l6-5lj1etl",
+        "name": "[Misc] Vehicle Block Damage",
+        "options": [
+          {
+            "id": "opt-1v24-8arsutl",
+            "label": "0%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-wico-vef4n7i",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-gqz2-fr659sn",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-36gp-5luytsb",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-s415-4nwpqwa",
+            "label": "200%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-8g8t-3u21kac",
+            "label": "300%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-ufgr-q9xq4f6",
+        "name": "[Misc] Vehicle Entity Damage",
+        "options": [
+          {
+            "id": "opt-ittp-r3nhakk",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-n3e1-09m44xd",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-dujc-pbc2tj2",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-u0lu-833zboz",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-2qpf-ibdcziq",
+            "label": "50%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-r8g4-oezxz2f",
+            "label": "0%",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-d1bu-po4205c",
+        "name": "[Misc] Vehicle Safe Damage",
+        "options": [
+          {
+            "id": "opt-yuet-3bqalsz",
+            "label": "0%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-9101-2p42191",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-5rut-22zpcch",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-uge1-12cdf64",
+            "label": "150%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-ne4l-h5bdqe4",
+            "label": "200%",
+            "rank": "B"
+          },
+          {
+            "id": "opt-gcam-rj0agde",
+            "label": "300%",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-d0kd-bw887rd",
+        "name": "[Misc] Electrical Output",
+        "options": [
+          {
+            "id": "opt-42ms-065fu69",
+            "label": "300%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-43bz-2pl6c2z",
+            "label": "200%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-0znp-fn45gbm",
+            "label": "150%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-0zzp-vy1fa6w",
+            "label": "100% (Default)",
+            "rank": "D"
+          },
+          {
+            "id": "opt-75xl-1bv1o1c",
+            "label": "75%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-85xk-ebo11z6",
+            "label": "50%",
+            "rank": "B"
+          }
+        ]
+      },
+      {
+        "id": "cat-11nq-m0ggtih",
+        "name": "[Misc] Gravity",
+        "options": [
+          {
+            "id": "opt-d6s6-xk7nr6d",
+            "label": "Low",
+            "rank": "E"
+          },
+          {
+            "id": "opt-jevb-r88qwuq",
+            "label": "Default",
+            "rank": "D"
+          },
+          {
+            "id": "opt-9xgz-67qq8m6",
+            "label": "High",
+            "rank": "B"
+          }
+        ]
+      }
+    ],
+    "createdAt": 1794431940000,
+    "updatedAt": 1794432808158
+  },
+  {
+    "id": "game-6in7-tmrh54r",
+    "title": "Minecraft (Challenge)",
+    "description": "Simplified example entry.",
+    "categories": [
+      {
+        "id": "cat-6in7-qg8ww68",
+        "name": "Player Hearts",
+        "options": [
+          {
+            "id": "opt-8s2m-zykdy4a",
+            "label": "20",
+            "rank": "F"
+          },
+          {
+            "id": "opt-8tc4-bhwuoev",
+            "label": "10",
+            "rank": "D"
+          },
+          {
+            "id": "opt-8uq1-jbyz2jw",
+            "label": "7",
+            "rank": "B"
+          },
+          {
+            "id": "opt-8vwi-1frczuc",
+            "label": "3",
+            "rank": "A"
+          },
+          {
+            "id": "opt-8wbo-r1nmnno",
+            "label": "1",
+            "rank": "S"
+          }
+        ]
+      },
+      {
+        "id": "cat-a9tw-18m2oh3",
+        "name": "Game Rule Keep Inventory",
+        "options": [
+          {
+            "id": "opt-a9tw-ez9l4nt",
+            "label": "Yes",
+            "rank": "F"
+          },
+          {
+            "id": "opt-a9tw-wyhrr9y",
+            "label": "No",
+            "rank": "D"
+          }
+        ]
+      },
+      {
+        "id": "cat-b7ke-133ow1z",
+        "name": "Hardcore",
+        "options": [
+          {
+            "id": "opt-b7ke-8luffeh",
+            "label": "Yes",
+            "rank": "S"
+          },
+          {
+            "id": "opt-b7ke-hvpzvq8",
+            "label": "No",
+            "rank": "D"
+          }
+        ]
+      },
+      {
+        "id": "cat-c07w-no6yert",
+        "name": "Game Mode",
+        "options": [
+          {
+            "id": "opt-c07w-0s4btq1",
+            "label": "Survival",
+            "rank": "D"
+          },
+          {
+            "id": "opt-c07w-i00kebv",
+            "label": "Adventure",
+            "rank": "A"
+          }
+        ]
+      },
+      {
+        "id": "cat-e1yz-vc7xw4m",
+        "name": "Player Fall Damage",
+        "options": [
+          {
+            "id": "opt-e1yz-qv51drr",
+            "label": "0%",
+            "rank": "F"
+          },
+          {
+            "id": "opt-e1yz-o8kgwui",
+            "label": "50%",
+            "rank": "E"
+          },
+          {
+            "id": "opt-g70u-9vb3p6k",
+            "label": "100%",
+            "rank": "D"
+          },
+          {
+            "id": "opt-gbqb-tyird1s",
+            "label": "200%",
+            "rank": "C"
+          },
+          {
+            "id": "opt-gh51-ts2as7n",
+            "label": "500%",
+            "rank": "A"
+          },
+          {
+            "id": "opt-gvqd-e6tdtq7",
+            "label": "6767%",
+            "rank": "S"
+          }
+        ]
+      }
+    ],
+    "createdAt": 1794433174243,
+    "updatedAt": 1794433698509
+  }
+]

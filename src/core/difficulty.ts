@@ -1,5 +1,6 @@
-import type { GameBundle, Option, Rank, RollResult, RunSummary } from './types.ts';
-import { type RandomSource, cryptoRandomOrMathRandom, selectUniform } from './rng.ts';
+import type { GameBundle, Rank, RollResult, RunSummary } from './types.ts';
+import { type RandomSource, cryptoRandomOrMathRandom } from './rng.ts';
+import { createConstrainedRollResults } from './constraints.ts';
 
 export const RANK_TO_VALUE: Readonly<Record<Rank, number>> = {
   F: 1,
@@ -119,18 +120,7 @@ export function executeBundleRoll(
   rng: RandomSource = cryptoRandomOrMathRandom,
   timestamp: number = Date.now()
 ): RunSummary {
-  if (!bundle.categories || bundle.categories.length === 0) {
-    throw new Error(`Game "${bundle.title}" has no categories to roll.`);
-  }
-
-  const results: RollResult[] = bundle.categories.map((category) => {
-    const selectedOption: Option = selectUniform(category.options, rng);
-    return {
-      categoryId: category.id,
-      categoryName: category.name,
-      selectedOption,
-    };
-  });
+  const results = createConstrainedRollResults(bundle, rng);
 
   return createRunSummary(bundle, results, timestamp);
 }

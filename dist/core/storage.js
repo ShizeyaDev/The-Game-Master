@@ -1,4 +1,7 @@
-import {                                                                            VALID_RANKS } from './types.js';
+import {
+
+  VALID_RANKS,
+} from './types.js';
 import { createDefaultSeedBundle } from './seed.js';
 
 export const STORAGE_NAMESPACE = 'TGM_BUNDLES_V1'         ;
@@ -57,14 +60,167 @@ export function validateOption(raw         , contextPath        )               
     };
   }
 
+  if (
+    candidate.constraintValue !== undefined &&
+    (typeof candidate.constraintValue !== 'number' || !Number.isFinite(candidate.constraintValue))
+  ) {
+    return { valid: false, error: `${contextPath}.constraintValue must be a finite number when provided.` };
+  }
+
   return {
     valid: true,
     value: {
       id: candidate.id.trim(),
       label: candidate.label.trim(),
       rank: candidate.rank,
+      ...(candidate.constraintValue === undefined
+        ? {}
+        : { constraintValue: candidate.constraintValue }),
     },
   };
+}
+
+function validateRollConstraints(
+  raw         ,
+  categories                     ,
+  contextPath
+)                                                                            {
+  if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) {
+    return { valid: false, error: `${contextPath} must be a non-null object.` };
+  }
+
+  const candidate = raw                           ;
+  const categoryMap = new Map(categories.map((category) => [category.id, category]));
+  const optionIds = new Set(categories.flatMap((category) => category.options.map((option) => option.id)));
+  const value                  = {};
+
+  if (candidate.maxAttempts !== undefined) {
+    if (
+      typeof candidate.maxAttempts !== 'number' ||
+      !Number.isInteger(candidate.maxAttempts) ||
+      candidate.maxAttempts < 1 ||
+      candidate.maxAttempts > 100000
+    ) {
+      return { valid: false, error: `${contextPath}.maxAttempts must be an integer from 1 to 100000.` };
+    }
+    value.maxAttempts = candidate.maxAttempts;
+  }
+
+  if (candidate.rankLimits !== undefined) {
+    if (!Array.isArray(candidate.rankLimits)) {
+      return { valid: false, error: `${contextPath}.rankLimits must be an array.` };
+    }
+    value.rankLimits = [];
+    for (let i = 0; i < candidate.rankLimits.length; i++) {
+      const rawLimit = candidate.rankLimits[i];
+      const path = `${contextPath}.rankLimits[${i}]`;
+      if (typeof rawLimit !== 'object' || rawLimit === null || Array.isArray(rawLimit)) {
+        return { valid: false, error: `${path} must be an object.` };
+      }
+      const limit = rawLimit                           ;
+      if (!Array.isArray(limit.ranks) || limit.ranks.length === 0 || !limit.ranks.every(isValidRank)) {
+        return { valid: false, error: `${path}.ranks must contain at least one valid rank.` };
+      }
+      if (typeof limit.max !== 'number' || !Number.isInteger(limit.max) || limit.max < 0) {
+        return { valid: false, error: `${path}.max must be a non-negative integer.` };
+      }
+      if (limit.reason !== undefined && typeof limit.reason !== 'string') {
+        return { valid: false, error: `${path}.reason must be a string when provided.` };
+      }
+      value.rankLimits.push({
+        ranks: Array.from(new Set(limit.ranks          )),
+        max: limit.max,
+        ...(typeof limit.reason === 'string' ? { reason: limit.reason.trim() } : {}),
+      });
+    }
+  }
+
+  if (candidate.forbiddenCombinations !== undefined) {
+    if (!Array.isArray(candidate.forbiddenCombinations)) {
+      return { valid: false, error: `${contextPath}.forbiddenCombinations must be an array.` };
+    }
+    value.forbiddenCombinations = [];
+    for (let i = 0; i < candidate.forbiddenCombinations.length; i++) {
+      const rawRule = candidate.forbiddenCombinations[i];
+      const path = `${contextPath}.forbiddenCombinations[${i}]`;
+      if (typeof rawRule !== 'object' || rawRule === null || Array.isArray(rawRule)) {
+        return { valid: false, error: `${path} must be an object.` };
+      }
+      const rule = rawRule                           ;
+      if (
+        !Array.isArray(rule.optionIds) ||
+        rule.optionIds.length < 2 ||
+        !rule.optionIds.every((id) => typeof id === 'string' && optionIds.has(id))
+      ) {
+        return { valid: false, error: `${path}.optionIds must reference at least two existing options.` };
+      }
+      if (new Set(rule.optionIds).size !== rule.optionIds.length) {
+        return { valid: false, error: `${path}.optionIds must not contain duplicates.` };
+      }
+      if (rule.reason !== undefined && typeof rule.reason !== 'string') {
+        return { valid: false, error: `${path}.reason must be a string when provided.` };
+      }
+      value.forbiddenCombinations.push({
+        optionIds: Array.from(new Set(rule.optionIds            )),
+        ...(typeof rule.reason === 'string' ? { reason: rule.reason.trim() } : {}),
+      });
+    }
+  }
+
+  if (candidate.numericSums !== undefined) {
+    if (!Array.isArray(candidate.numericSums)) {
+      return { valid: false, error: `${contextPath}.numericSums must be an array.` };
+    }
+    value.numericSums = [];
+    for (let i = 0; i < candidate.numericSums.length; i++) {
+      const rawRule = candidate.numericSums[i];
+      const path = `${contextPath}.numericSums[${i}]`;
+      if (typeof rawRule !== 'object' || rawRule === null || Array.isArray(rawRule)) {
+        return { valid: false, error: `${path} must be an object.` };
+      }
+      const rule = rawRule                           ;
+      if (
+        !Array.isArray(rule.categoryIds) ||
+        rule.categoryIds.length < 2 ||
+        !rule.categoryIds.every((id) => typeof id === 'string' && categoryMap.has(id))
+      ) {
+        return { valid: false, error: `${path}.categoryIds must reference at least two existing categories.` };
+      }
+      if (new Set(rule.categoryIds).size !== rule.categoryIds.length) {
+        return { valid: false, error: `${path}.categoryIds must not contain duplicates.` };
+      }
+      const uniqueCategoryIds = Array.from(new Set(rule.categoryIds            ));
+      const missingValueCategory = uniqueCategoryIds.find((id) =>
+        categoryMap.get(id)?.options.some((option) => option.constraintValue === undefined)
+      );
+      if (missingValueCategory) {
+        return {
+          valid: false,
+          error: `${path} requires every option in category "${missingValueCategory}" to define constraintValue.`,
+        };
+      }
+      if (typeof rule.target !== 'number' || !Number.isFinite(rule.target)) {
+        return { valid: false, error: `${path}.target must be a finite number.` };
+      }
+      if (
+        rule.tolerance !== undefined &&
+        (typeof rule.tolerance !== 'number' || !Number.isFinite(rule.tolerance) || rule.tolerance < 0)
+      ) {
+        return { valid: false, error: `${path}.tolerance must be a non-negative finite number.` };
+      }
+      if (rule.reason !== undefined && typeof rule.reason !== 'string') {
+        return { valid: false, error: `${path}.reason must be a string when provided.` };
+      }
+      value.numericSums.push({
+        categoryIds: uniqueCategoryIds,
+        target: rule.target,
+        ...(typeof rule.tolerance === 'number' ? { tolerance: rule.tolerance } : {}),
+        ...(typeof rule.reason === 'string' ? { reason: rule.reason.trim() } : {}),
+      });
+    }
+  }
+
+  return { valid: true, value };
 }
 
 export function validateCategory(raw         , contextPath        )                                                                     {
@@ -147,6 +303,7 @@ export function validateGameBundle(raw         , contextPath = 'Game')          
 
   const validatedCategories             = [];
   const seenCategoryIds = new Set        ();
+  const seenBundleOptionIds = new Set        ();
 
   for (let i = 0; i < candidate.categories.length; i++) {
     const catCheck = validateCategory(candidate.categories[i], `${contextPath}.categories[${i}]`);
@@ -160,7 +317,29 @@ export function validateGameBundle(raw         , contextPath = 'Game')          
       };
     }
     seenCategoryIds.add(catCheck.value.id);
+    for (const option of catCheck.value.options) {
+      if (seenBundleOptionIds.has(option.id)) {
+        return {
+          valid: false,
+          error: `${contextPath}.categories[${i}] contains bundle-wide duplicate option id "${option.id}".`,
+        };
+      }
+      seenBundleOptionIds.add(option.id);
+    }
     validatedCategories.push(catCheck.value);
+  }
+
+  let constraints                             ;
+  if (candidate.constraints !== undefined) {
+    const constraintsCheck = validateRollConstraints(
+      candidate.constraints,
+      validatedCategories,
+      `${contextPath}.constraints`
+    );
+    if (!constraintsCheck.valid) {
+      return constraintsCheck;
+    }
+    constraints = constraintsCheck.value;
   }
 
   return {
@@ -170,6 +349,7 @@ export function validateGameBundle(raw         , contextPath = 'Game')          
       title: candidate.title.trim(),
       description: candidate.description.trim(),
       categories: validatedCategories,
+      ...(constraints ? { constraints } : {}),
       createdAt: candidate.createdAt,
       updatedAt: candidate.updatedAt,
     },

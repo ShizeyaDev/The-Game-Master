@@ -4,6 +4,8 @@ import {
 
   evaluateRunDifficulty,
   executeBundleRoll,
+  createConstrainedRollResults,
+  getConstraintViolations,
   rankToNumber,
   selectUniform,
 } from './index.js';
@@ -154,8 +156,63 @@ export function runPhase1Verification()       {
   const summary = executeBundleRoll(DEFAULT_SEED_BUNDLE);
   assert(summary.results.length === DEFAULT_SEED_BUNDLE.categories.length, 'Roll summary should have 1 result per category');
 
+  const constrainedBundle             = {
+    id: 'constrained-test',
+    title: 'Constrained Test',
+    description: 'Verifies rejection sampling and declarative constraints.',
+    createdAt: 1730000000000,
+    updatedAt: 1730000000000,
+    categories: [
+      {
+        id: 'c-a',
+        name: 'A',
+        options: [
+          { id: 'a-safe', label: 'Safe A', rank: 'F', constraintValue: 40 },
+          { id: 'a-hard', label: 'Hard A', rank: 'S', constraintValue: 70 },
+        ],
+      },
+      {
+        id: 'c-b',
+        name: 'B',
+        options: [
+          { id: 'b-safe', label: 'Safe B', rank: 'F', constraintValue: 60 },
+          { id: 'b-hard', label: 'Hard B', rank: 'S', constraintValue: 30 },
+        ],
+      },
+    ],
+    constraints: {
+      maxAttempts: 4,
+      rankLimits: [{ ranks: ['S'], max: 1 }],
+      forbiddenCombinations: [{ optionIds: ['a-hard', 'b-hard'] }],
+      numericSums: [{ categoryIds: ['c-a', 'c-b'], target: 100 }],
+    },
+  };
+  const rngValues = [0.99, 0, 0, 0];
+  const constrainedResults = createConstrainedRollResults(
+    constrainedBundle,
+    () => rngValues.shift() ?? 0
+  );
+  assert(
+    constrainedResults[0].selectedOption.id === 'a-safe' &&
+      constrainedResults[1].selectedOption.id === 'b-safe',
+    'Constraint planner should reject invalid configurations and keep the first valid uniform draw'
+  );
+  assert(
+    getConstraintViolations(constrainedBundle, constrainedResults).length === 0,
+    'Accepted constrained result must satisfy every configured rule'
+  );
+
+  engine.saveBundle(constrainedBundle);
+  const storedConstrained = engine.getBundleById(constrainedBundle.id);
+  assert(
+    storedConstrained?.constraints?.numericSums?.[0].target === 100 &&
+      storedConstrained.categories[0].options[0].constraintValue === 40,
+    'Storage must preserve constraints and per-option numeric values'
+  );
+
   engine.deleteBundle('custom-bundle-1');
-  assert(engine.getAllBundles().length === 1, 'Should have 1 bundle after deleting custom-bundle-1');
+  engine.deleteBundle('constrained-test');
+  assert(engine.getAllBundles().length === 1, 'Should have 1 bundle after deleting test bundles');
 }
 
 runPhase1Verification();

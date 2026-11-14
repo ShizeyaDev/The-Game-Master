@@ -2164,6 +2164,164 @@ function selectUniform   (
   return array[index];
 }
 
+const DEFAULT_CONSTRAINT_ATTEMPTS = 20000;
+
+function enumerateNumericAssignments(
+  categories                     ,
+  rule
+)                      {
+  const validAssignments                      = [];
+  const selected = new Map                ();
+  const tolerance = rule.tolerance ?? 0;
+
+  const visit = (index        , total        )       => {
+    if (index === categories.length) {
+      if (Math.abs(total - rule.target) <= tolerance) {
+        validAssignments.push(new Map(selected));
+      }
+      return;
+    }
+
+    const category = categories[index];
+    for (const option of category.options) {
+      if (typeof option.constraintValue !== 'number') {
+        continue;
+      }
+      selected.set(category.id, option);
+      visit(index + 1, total + option.constraintValue);
+    }
+    selected.delete(category.id);
+  };
+
+  visit(0, 0);
+  return validAssignments;
+}
+
+function prepareNumericAssignmentPools(bundle            )                               {
+  const rules = bundle.constraints?.numericSums ?? [];
+  if (rules.length === 0) {
+    return [];
+  }
+
+  const categoriesById = new Map(bundle.categories.map((category) => [category.id, category]));
+  const claimedCategoryIds = new Set        ();
+  const pools                        = [];
+
+  for (const rule of rules) {
+    if (rule.categoryIds.some((id) => claimedCategoryIds.has(id))) {
+      return null;
+    }
+    const categories = rule.categoryIds
+      .map((id) => categoriesById.get(id))
+      .filter((category)                       => Boolean(category));
+    const combinations = categories.reduce(
+      (count, category) => count * category.options.length,
+      1
+    );
+    if (categories.length !== rule.categoryIds.length || combinations > 100000) {
+      return null;
+    }
+
+    const assignments = enumerateNumericAssignments(categories, rule);
+    if (assignments.length === 0) {
+      throw new Error(rule.reason ?? `Numeric constraint targeting ${rule.target} has no solution.`);
+    }
+    pools.push(assignments);
+    rule.categoryIds.forEach((id) => claimedCategoryIds.add(id));
+  }
+
+  return pools;
+}
+function getConstraintViolations(
+  bundle            ,
+  results
+)           {
+  const constraints = bundle.constraints;
+  if (!constraints) {
+    return [];
+  }
+
+  const violations           = [];
+  const selectedOptions = new Map(
+    results.map((result) => [result.selectedOption.id, result.selectedOption])
+  );
+  const resultsByCategory = new Map(results.map((result) => [result.categoryId, result]));
+
+  for (const limit of constraints.rankLimits ?? []) {
+    const selectedCount = results.filter((result) =>
+      limit.ranks.includes(result.selectedOption.rank)
+    ).length;
+    if (selectedCount > limit.max) {
+      violations.push(
+        limit.reason ??
+          `At most ${limit.max} result(s) may use rank ${limit.ranks.join('/')}.`
+      );
+    }
+  }
+
+  for (const rule of constraints.forbiddenCombinations ?? []) {
+    if (rule.optionIds.every((optionId) => selectedOptions.has(optionId))) {
+      violations.push(rule.reason ?? `Forbidden option combination: ${rule.optionIds.join(', ')}.`);
+    }
+  }
+
+  for (const rule of constraints.numericSums ?? []) {
+    const values = rule.categoryIds.map(
+      (categoryId) => resultsByCategory.get(categoryId)?.selectedOption.constraintValue
+    );
+    if (values.some((value) => typeof value !== 'number' || !Number.isFinite(value))) {
+      violations.push(
+        rule.reason ?? `Numeric sum rule is missing a constraintValue in one of its categories.`
+      );
+      continue;
+    }
+
+    const total = (values            ).reduce((sum, value) => sum + value, 0);
+    const tolerance = rule.tolerance ?? 0;
+    if (Math.abs(total - rule.target) > tolerance) {
+      violations.push(rule.reason ?? `Numeric sum must equal ${rule.target}; received ${total}.`);
+    }
+  }
+
+  return violations;
+}
+function createConstrainedRollResults(
+  bundle            ,
+  rng               = cryptoRandomOrMathRandom
+)               {
+  if (!bundle.categories || bundle.categories.length === 0) {
+    throw new Error(`Game "${bundle.title}" has no categories to roll.`);
+  }
+
+  const maxAttempts = bundle.constraints?.maxAttempts ?? DEFAULT_CONSTRAINT_ATTEMPTS;
+  const numericAssignmentPools = prepareNumericAssignmentPools(bundle);
+
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    const selectedByCategory = new Map                ();
+    if (numericAssignmentPools) {
+      for (const pool of numericAssignmentPools) {
+        const assignment = selectUniform(pool, rng);
+        assignment.forEach((option, categoryId) => selectedByCategory.set(categoryId, option));
+      }
+    }
+
+    const results = bundle.categories.map((category) => ({
+      categoryId: category.id,
+      categoryName: category.name,
+      selectedOption: selectedByCategory.get(category.id) ?? selectUniform(category.options, rng),
+    }));
+
+    if (getConstraintViolations(bundle, results).length === 0) {
+      return results;
+    }
+  }
+
+  throw new Error(
+    `No valid random configuration was found for "${bundle.title}" after ${maxAttempts} attempts. ` +
+      'Review its constraints; they may be too strict or contradictory.'
+  );
+}
+
 const RANK_TO_VALUE                                 = {
   F: 1,
   E: 2,
@@ -2267,18 +2425,7 @@ function executeBundleRoll(
   rng               = cryptoRandomOrMathRandom,
   timestamp         = Date.now()
 )             {
-  if (!bundle.categories || bundle.categories.length === 0) {
-    throw new Error(`Game "${bundle.title}" has no categories to roll.`);
-  }
-
-  const results               = bundle.categories.map((category) => {
-    const selectedOption         = selectUniform(category.options, rng);
-    return {
-      categoryId: category.id,
-      categoryName: category.name,
-      selectedOption,
-    };
-  });
+  const results = createConstrainedRollResults(bundle, rng);
 
   return createRunSummary(bundle, results, timestamp);
 }
@@ -2406,14 +2553,167 @@ function validateOption(raw         , contextPath        )                      
     };
   }
 
+  if (
+    candidate.constraintValue !== undefined &&
+    (typeof candidate.constraintValue !== 'number' || !Number.isFinite(candidate.constraintValue))
+  ) {
+    return { valid: false, error: `${contextPath}.constraintValue must be a finite number when provided.` };
+  }
+
   return {
     valid: true,
     value: {
       id: candidate.id.trim(),
       label: candidate.label.trim(),
       rank: candidate.rank,
+      ...(candidate.constraintValue === undefined
+        ? {}
+        : { constraintValue: candidate.constraintValue }),
     },
   };
+}
+
+function validateRollConstraints(
+  raw         ,
+  categories                     ,
+  contextPath
+)                                                                            {
+  if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) {
+    return { valid: false, error: `${contextPath} must be a non-null object.` };
+  }
+
+  const candidate = raw                           ;
+  const categoryMap = new Map(categories.map((category) => [category.id, category]));
+  const optionIds = new Set(categories.flatMap((category) => category.options.map((option) => option.id)));
+  const value                  = {};
+
+  if (candidate.maxAttempts !== undefined) {
+    if (
+      typeof candidate.maxAttempts !== 'number' ||
+      !Number.isInteger(candidate.maxAttempts) ||
+      candidate.maxAttempts < 1 ||
+      candidate.maxAttempts > 100000
+    ) {
+      return { valid: false, error: `${contextPath}.maxAttempts must be an integer from 1 to 100000.` };
+    }
+    value.maxAttempts = candidate.maxAttempts;
+  }
+
+  if (candidate.rankLimits !== undefined) {
+    if (!Array.isArray(candidate.rankLimits)) {
+      return { valid: false, error: `${contextPath}.rankLimits must be an array.` };
+    }
+    value.rankLimits = [];
+    for (let i = 0; i < candidate.rankLimits.length; i++) {
+      const rawLimit = candidate.rankLimits[i];
+      const path = `${contextPath}.rankLimits[${i}]`;
+      if (typeof rawLimit !== 'object' || rawLimit === null || Array.isArray(rawLimit)) {
+        return { valid: false, error: `${path} must be an object.` };
+      }
+      const limit = rawLimit                           ;
+      if (!Array.isArray(limit.ranks) || limit.ranks.length === 0 || !limit.ranks.every(isValidRank)) {
+        return { valid: false, error: `${path}.ranks must contain at least one valid rank.` };
+      }
+      if (typeof limit.max !== 'number' || !Number.isInteger(limit.max) || limit.max < 0) {
+        return { valid: false, error: `${path}.max must be a non-negative integer.` };
+      }
+      if (limit.reason !== undefined && typeof limit.reason !== 'string') {
+        return { valid: false, error: `${path}.reason must be a string when provided.` };
+      }
+      value.rankLimits.push({
+        ranks: Array.from(new Set(limit.ranks          )),
+        max: limit.max,
+        ...(typeof limit.reason === 'string' ? { reason: limit.reason.trim() } : {}),
+      });
+    }
+  }
+
+  if (candidate.forbiddenCombinations !== undefined) {
+    if (!Array.isArray(candidate.forbiddenCombinations)) {
+      return { valid: false, error: `${contextPath}.forbiddenCombinations must be an array.` };
+    }
+    value.forbiddenCombinations = [];
+    for (let i = 0; i < candidate.forbiddenCombinations.length; i++) {
+      const rawRule = candidate.forbiddenCombinations[i];
+      const path = `${contextPath}.forbiddenCombinations[${i}]`;
+      if (typeof rawRule !== 'object' || rawRule === null || Array.isArray(rawRule)) {
+        return { valid: false, error: `${path} must be an object.` };
+      }
+      const rule = rawRule                           ;
+      if (
+        !Array.isArray(rule.optionIds) ||
+        rule.optionIds.length < 2 ||
+        !rule.optionIds.every((id) => typeof id === 'string' && optionIds.has(id))
+      ) {
+        return { valid: false, error: `${path}.optionIds must reference at least two existing options.` };
+      }
+      if (new Set(rule.optionIds).size !== rule.optionIds.length) {
+        return { valid: false, error: `${path}.optionIds must not contain duplicates.` };
+      }
+      if (rule.reason !== undefined && typeof rule.reason !== 'string') {
+        return { valid: false, error: `${path}.reason must be a string when provided.` };
+      }
+      value.forbiddenCombinations.push({
+        optionIds: Array.from(new Set(rule.optionIds            )),
+        ...(typeof rule.reason === 'string' ? { reason: rule.reason.trim() } : {}),
+      });
+    }
+  }
+
+  if (candidate.numericSums !== undefined) {
+    if (!Array.isArray(candidate.numericSums)) {
+      return { valid: false, error: `${contextPath}.numericSums must be an array.` };
+    }
+    value.numericSums = [];
+    for (let i = 0; i < candidate.numericSums.length; i++) {
+      const rawRule = candidate.numericSums[i];
+      const path = `${contextPath}.numericSums[${i}]`;
+      if (typeof rawRule !== 'object' || rawRule === null || Array.isArray(rawRule)) {
+        return { valid: false, error: `${path} must be an object.` };
+      }
+      const rule = rawRule                           ;
+      if (
+        !Array.isArray(rule.categoryIds) ||
+        rule.categoryIds.length < 2 ||
+        !rule.categoryIds.every((id) => typeof id === 'string' && categoryMap.has(id))
+      ) {
+        return { valid: false, error: `${path}.categoryIds must reference at least two existing categories.` };
+      }
+      if (new Set(rule.categoryIds).size !== rule.categoryIds.length) {
+        return { valid: false, error: `${path}.categoryIds must not contain duplicates.` };
+      }
+      const uniqueCategoryIds = Array.from(new Set(rule.categoryIds            ));
+      const missingValueCategory = uniqueCategoryIds.find((id) =>
+        categoryMap.get(id)?.options.some((option) => option.constraintValue === undefined)
+      );
+      if (missingValueCategory) {
+        return {
+          valid: false,
+          error: `${path} requires every option in category "${missingValueCategory}" to define constraintValue.`,
+        };
+      }
+      if (typeof rule.target !== 'number' || !Number.isFinite(rule.target)) {
+        return { valid: false, error: `${path}.target must be a finite number.` };
+      }
+      if (
+        rule.tolerance !== undefined &&
+        (typeof rule.tolerance !== 'number' || !Number.isFinite(rule.tolerance) || rule.tolerance < 0)
+      ) {
+        return { valid: false, error: `${path}.tolerance must be a non-negative finite number.` };
+      }
+      if (rule.reason !== undefined && typeof rule.reason !== 'string') {
+        return { valid: false, error: `${path}.reason must be a string when provided.` };
+      }
+      value.numericSums.push({
+        categoryIds: uniqueCategoryIds,
+        target: rule.target,
+        ...(typeof rule.tolerance === 'number' ? { tolerance: rule.tolerance } : {}),
+        ...(typeof rule.reason === 'string' ? { reason: rule.reason.trim() } : {}),
+      });
+    }
+  }
+
+  return { valid: true, value };
 }
 function validateCategory(raw         , contextPath        )                                                                     {
   if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) {
@@ -2494,6 +2794,7 @@ function validateGameBundle(raw         , contextPath = 'Game')                 
 
   const validatedCategories             = [];
   const seenCategoryIds = new Set        ();
+  const seenBundleOptionIds = new Set        ();
 
   for (let i = 0; i < candidate.categories.length; i++) {
     const catCheck = validateCategory(candidate.categories[i], `${contextPath}.categories[${i}]`);
@@ -2507,7 +2808,29 @@ function validateGameBundle(raw         , contextPath = 'Game')                 
       };
     }
     seenCategoryIds.add(catCheck.value.id);
+    for (const option of catCheck.value.options) {
+      if (seenBundleOptionIds.has(option.id)) {
+        return {
+          valid: false,
+          error: `${contextPath}.categories[${i}] contains bundle-wide duplicate option id "${option.id}".`,
+        };
+      }
+      seenBundleOptionIds.add(option.id);
+    }
     validatedCategories.push(catCheck.value);
+  }
+
+  let constraints                             ;
+  if (candidate.constraints !== undefined) {
+    const constraintsCheck = validateRollConstraints(
+      candidate.constraints,
+      validatedCategories,
+      `${contextPath}.constraints`
+    );
+    if (!constraintsCheck.valid) {
+      return constraintsCheck;
+    }
+    constraints = constraintsCheck.value;
   }
 
   return {
@@ -2517,6 +2840,7 @@ function validateGameBundle(raw         , contextPath = 'Game')                 
       title: candidate.title.trim(),
       description: candidate.description.trim(),
       categories: validatedCategories,
+      ...(constraints ? { constraints } : {}),
       createdAt: candidate.createdAt,
       updatedAt: candidate.updatedAt,
     },
@@ -2870,6 +3194,14 @@ function evaluateBundleGuardrails(bundle            )                         {
     });
   }
 
+  if (titleError === null && bundleLevelErrors.length === 0 && Object.keys(categoryIssues).length === 0) {
+    const schemaCheck = validateGameBundle(bundle);
+    if (!schemaCheck.valid) {
+      bundleLevelErrors.push(schemaCheck.error);
+      allErrorMessages.push(schemaCheck.error);
+    }
+  }
+
   const isValid =
     titleError === null &&
     bundleLevelErrors.length === 0 &&
@@ -3001,6 +3333,7 @@ class SequentialRollController {
           currentCategoryIndex = 0;
           landedOption                = null;
           results               = [];
+          plannedResults               = [];
           rng              ;
 
           activeTimers           = [];
@@ -3039,10 +3372,14 @@ class SequentialRollController {
   }
 
          startSequence(bundle            , immediateResolveForTests = false)       {
+    const nextBundle = JSON.parse(JSON.stringify(bundle))              ;
+    const nextPlan = createConstrainedRollResults(nextBundle, this.rng);
+
     this.clearTimers();
-    this.bundle = JSON.parse(JSON.stringify(bundle))              ;
+    this.bundle = nextBundle;
     this.currentCategoryIndex = 0;
     this.results = [];
+    this.plannedResults = nextPlan;
     this.landedOption = null;
     this.prepareCategoryReadyState();
 
@@ -3080,7 +3417,10 @@ class SequentialRollController {
     this.clearTimers();
     this.stage = 'ROLLING';
 
-    const chosenOutcome = selectUniform(category.options, this.rng);
+    const chosenOutcome = this.plannedResults[this.currentCategoryIndex]?.selectedOption;
+    if (!chosenOutcome) {
+      throw new Error(`Missing planned outcome for category "${category.name}".`);
+    }
     this.landedOption = chosenOutcome;
     const track = buildTumblerReelTrack(category.options, chosenOutcome);
     this.activeReelTrack = track;
@@ -3207,6 +3547,7 @@ class SequentialRollController {
     this.currentCategoryIndex = 0;
     this.landedOption = null;
     this.results = [];
+    this.plannedResults = [];
     this.activeReelTrack = null;
     this.onAbortRun();
   }
@@ -3870,7 +4211,13 @@ class GameMasterUIController {
     this.completedRunSummary = null;
     this.statusBanner = null;
     this.viewMode = 'ROLL_SEQUENCE';
-    this.rollController.startSequence(target);
+    try {
+      this.rollController.startSequence(target);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Unable to create a valid random configuration.';
+      this.viewMode = 'LIBRARY';
+      this.setStatusBanner('error', message, 10000);
+    }
   }
 
           handleExportLibrary()       {

@@ -1,4 +1,5 @@
-import {                    cryptoRandomOrMathRandom, selectUniform } from './rng.js';
+import {                    cryptoRandomOrMathRandom } from './rng.js';
+import { createConstrainedRollResults } from './constraints.js';
 
 export const RANK_TO_VALUE                                 = {
   F: 1,
@@ -109,18 +110,7 @@ export function executeBundleRoll(
   rng               = cryptoRandomOrMathRandom,
   timestamp         = Date.now()
 )             {
-  if (!bundle.categories || bundle.categories.length === 0) {
-    throw new Error(`Game "${bundle.title}" has no categories to roll.`);
-  }
-
-  const results               = bundle.categories.map((category) => {
-    const selectedOption         = selectUniform(category.options, rng);
-    return {
-      categoryId: category.id,
-      categoryName: category.name,
-      selectedOption,
-    };
-  });
+  const results = createConstrainedRollResults(bundle, rng);
 
   return createRunSummary(bundle, results, timestamp);
 }

@@ -6,6 +6,32 @@ export interface Option {
   id: string;
   label: string;
   rank: Rank;
+  constraintValue?: number;
+}
+
+export interface RankLimitConstraint {
+  ranks: Rank[];
+  max: number;
+  reason?: string;
+}
+
+export interface ForbiddenCombinationConstraint {
+  optionIds: string[];
+  reason?: string;
+}
+
+export interface NumericSumConstraint {
+  categoryIds: string[];
+  target: number;
+  tolerance?: number;
+  reason?: string;
+}
+
+export interface RollConstraints {
+  maxAttempts?: number;
+  rankLimits?: RankLimitConstraint[];
+  forbiddenCombinations?: ForbiddenCombinationConstraint[];
+  numericSums?: NumericSumConstraint[];
 }
 
 export interface Category {
@@ -19,6 +45,7 @@ export interface GameBundle {
   title: string;
   description: string;
   categories: Category[];
+  constraints?: RollConstraints;
   createdAt: number;
   updatedAt: number;
 }

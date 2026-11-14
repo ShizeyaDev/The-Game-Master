@@ -6,9 +6,9 @@ import {
   type RandomSource,
   type RollResult,
   type RunSummary,
+  createConstrainedRollResults,
   createRunSummary,
   cryptoRandomOrMathRandom,
-  selectUniform,
 } from '../core/index.ts';
 import { Icons } from './icons.ts';
 
@@ -140,6 +140,7 @@ export class SequentialRollController {
   private currentCategoryIndex = 0;
   private landedOption: Option | null = null;
   private results: RollResult[] = [];
+  private plannedResults: RollResult[] = [];
   private rng: RandomSource;
 
   private activeTimers: number[] = [];
@@ -181,10 +182,14 @@ export class SequentialRollController {
   }
 
   public startSequence(bundle: GameBundle, immediateResolveForTests = false): void {
+    const nextBundle = JSON.parse(JSON.stringify(bundle)) as GameBundle;
+    const nextPlan = createConstrainedRollResults(nextBundle, this.rng);
+
     this.clearTimers();
-    this.bundle = JSON.parse(JSON.stringify(bundle)) as GameBundle;
+    this.bundle = nextBundle;
     this.currentCategoryIndex = 0;
     this.results = [];
+    this.plannedResults = nextPlan;
     this.landedOption = null;
     this.prepareCategoryReadyState();
 
@@ -222,7 +227,10 @@ export class SequentialRollController {
     this.clearTimers();
     this.stage = 'ROLLING';
 
-    const chosenOutcome = selectUniform(category.options, this.rng);
+    const chosenOutcome = this.plannedResults[this.currentCategoryIndex]?.selectedOption;
+    if (!chosenOutcome) {
+      throw new Error(`Missing planned outcome for category "${category.name}".`);
+    }
     this.landedOption = chosenOutcome;
     const track = buildTumblerReelTrack(category.options, chosenOutcome);
     this.activeReelTrack = track;
@@ -349,6 +357,7 @@ export class SequentialRollController {
     this.currentCategoryIndex = 0;
     this.landedOption = null;
     this.results = [];
+    this.plannedResults = [];
     this.activeReelTrack = null;
     this.onAbortRun();
   }

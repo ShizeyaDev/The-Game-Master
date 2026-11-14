@@ -2,7 +2,7 @@
   {
     "id": "game-c054-sjrj5f2",
     "title": "7 Days to Die",
-    "description": "Complete 7 Days to Die V3.4 settings pool. (Some settings are not present due to not fitting RNG usage)",
+    "description": "Complete 7 Days to Die V3.4 settings pool with playability guardrails. RNG remains uniform across complete configurations that satisfy the preset constraints.",
     "categories": [
       {
         "id": "cat-zkqd-f22rmri",
@@ -99,22 +99,26 @@
           {
             "id": "opt-nosi-a28rc8w",
             "label": "100%",
-            "rank": "F"
+            "rank": "F",
+            "constraintValue": 100
           },
           {
             "id": "opt-3a54-i6sbcaj",
             "label": "50%",
-            "rank": "E"
+            "rank": "E",
+            "constraintValue": 50
           },
           {
             "id": "opt-p7oo-69s54sb",
             "label": "20% (Default)",
-            "rank": "D"
+            "rank": "D",
+            "constraintValue": 20
           },
           {
             "id": "opt-ybsy-41sekis",
             "label": "0%",
-            "rank": "B"
+            "rank": "B",
+            "constraintValue": 0
           }
         ]
       },
@@ -125,22 +129,26 @@
           {
             "id": "opt-0qni-t3ouo15",
             "label": "0%",
-            "rank": "E"
+            "rank": "E",
+            "constraintValue": 0
           },
           {
             "id": "opt-9rtl-wdnk4k2",
             "label": "20% (Default)",
-            "rank": "D"
+            "rank": "D",
+            "constraintValue": 20
           },
           {
             "id": "opt-mtyl-qrxy8t9",
             "label": "50%",
-            "rank": "C"
+            "rank": "C",
+            "constraintValue": 50
           },
           {
             "id": "opt-4lkp-fdo7h9u",
             "label": "100%",
-            "rank": "B"
+            "rank": "B",
+            "constraintValue": 100
           }
         ]
       },
@@ -151,22 +159,26 @@
           {
             "id": "opt-13sy-vbwdv77",
             "label": "0%",
-            "rank": "E"
+            "rank": "E",
+            "constraintValue": 0
           },
           {
             "id": "opt-4cqs-zu954kq",
             "label": "20% (Default)",
-            "rank": "D"
+            "rank": "D",
+            "constraintValue": 20
           },
           {
             "id": "opt-prfs-ndsjrux",
             "label": "50%",
-            "rank": "C"
+            "rank": "C",
+            "constraintValue": 50
           },
           {
             "id": "opt-az79-t530m1r",
             "label": "100%",
-            "rank": "B"
+            "rank": "B",
+            "constraintValue": 100
           }
         ]
       },
@@ -177,22 +189,26 @@
           {
             "id": "opt-dhag-a9wpw3x",
             "label": "0%",
-            "rank": "E"
+            "rank": "E",
+            "constraintValue": 0
           },
           {
             "id": "opt-2kyc-1yeli8y",
             "label": "20% (Default)",
-            "rank": "D"
+            "rank": "D",
+            "constraintValue": 20
           },
           {
             "id": "opt-ur7d-77s5552",
             "label": "50%",
-            "rank": "B"
+            "rank": "B",
+            "constraintValue": 50
           },
           {
             "id": "opt-e5hq-n61urzd",
             "label": "100%",
-            "rank": "A"
+            "rank": "A",
+            "constraintValue": 100
           }
         ]
       },
@@ -203,22 +219,26 @@
           {
             "id": "opt-bn24-1ji5kxs",
             "label": "0%",
-            "rank": "F"
+            "rank": "F",
+            "constraintValue": 0
           },
           {
             "id": "opt-6yaz-l2h9hwa",
             "label": "20% (Default)",
-            "rank": "D"
+            "rank": "D",
+            "constraintValue": 20
           },
           {
             "id": "opt-aq8l-pcwuhd5",
             "label": "50%",
-            "rank": "A"
+            "rank": "A",
+            "constraintValue": 50
           },
           {
             "id": "opt-p3oo-1698tpq",
             "label": "100%",
-            "rank": "S"
+            "rank": "S",
+            "constraintValue": 100
           }
         ]
       },
@@ -5352,6 +5372,120 @@
         ]
       }
     ],
+    "constraints": {
+      "maxAttempts": 20000,
+      "rankLimits": [
+        {
+          "ranks": [
+            "S"
+          ],
+          "max": 4,
+          "reason": "No run may contain more than four S-tier hazards."
+        },
+        {
+          "ranks": [
+            "A",
+            "S"
+          ],
+          "max": 15,
+          "reason": "No run may stack more than fifteen A/S-tier restrictions."
+        }
+      ],
+      "forbiddenCombinations": [
+        {
+          "optionIds": [
+            "opt-tunz-pymlb5c",
+            "opt-lelk-gra0qlg"
+          ],
+          "reason": "Ranged and melee damage cannot both be disabled."
+        },
+        {
+          "optionIds": [
+            "opt-8nkc-spnoqjw",
+            "opt-mwph-3qvp5ii"
+          ],
+          "reason": "Block and terrain damage cannot both be disabled."
+        },
+        {
+          "optionIds": [
+            "opt-sxrz-9vs2sfl",
+            "opt-xl65-42m6n5t"
+          ],
+          "reason": "Crouch and walk speed cannot both be disabled."
+        },
+        {
+          "optionIds": [
+            "opt-sxrz-9vs2sfl",
+            "opt-6vo6-dqupomk"
+          ],
+          "reason": "Crouch and run speed cannot both be disabled."
+        },
+        {
+          "optionIds": [
+            "opt-xl65-42m6n5t",
+            "opt-6vo6-dqupomk"
+          ],
+          "reason": "Walk and run speed cannot both be disabled."
+        },
+        {
+          "optionIds": [
+            "opt-zj5u-kqfjkkn",
+            "opt-2hd4-m10s0h4"
+          ],
+          "reason": "Headshot-only enemies require a non-zero headshot multiplier."
+        },
+        {
+          "optionIds": [
+            "opt-7cgu-of7zj0b",
+            "opt-lwbe-xvol5al"
+          ],
+          "reason": "Towns and wilderness POIs cannot both be absent."
+        },
+        {
+          "optionIds": [
+            "opt-y336-cvvcq5c",
+            "opt-6pj6-12hqpgt"
+          ],
+          "reason": "Mining and general resource yield cannot both be disabled."
+        },
+        {
+          "optionIds": [
+            "opt-r01a-tqm0jun",
+            "opt-dixn-uk7tc6y",
+            "opt-jv4u-in1hfz8"
+          ],
+          "reason": "An every-night blood moon cannot also use 64 nightmare-speed zombies."
+        },
+        {
+          "optionIds": [
+            "opt-odif-lkzxq4f",
+            "opt-lqek-rqjq6vm",
+            "opt-b3vt-lnd1lvv"
+          ],
+          "reason": "Food loot, crop yield, and trading cannot all be disabled."
+        },
+        {
+          "optionIds": [
+            "opt-9k3h-vbwee1q",
+            "opt-r0qg-mz5ojoy"
+          ],
+          "reason": "Zero XP cannot be combined with zero starting skill points."
+        }
+      ],
+      "numericSums": [
+        {
+          "categoryIds": [
+            "cat-2ry9-oei16vx",
+            "cat-k814-n2sunxq",
+            "cat-dpnq-72eyblg",
+            "cat-bau7-j0qn7w3",
+            "cat-jzsx-5vp6hw2"
+          ],
+          "target": 100,
+          "reason": "World-generation biome percentages must total exactly 100%."
+        }
+      ]
+    },
     "createdAt": 1794431940000,
     "updatedAt": 1794432808158
   },

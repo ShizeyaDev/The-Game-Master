@@ -1,4 +1,4 @@
-import { type GameBundle, isValidRank } from '../core/index.ts';
+import { type GameBundle, isValidRank, validateGameBundle } from '../core/index.ts';
 
 export interface CategoryValidationIssue {
   categoryId: string;
@@ -71,6 +71,14 @@ export function evaluateBundleGuardrails(bundle: GameBundle): BundleValidationRe
         allErrorMessages.push(...messages);
       }
     });
+  }
+
+  if (titleError === null && bundleLevelErrors.length === 0 && Object.keys(categoryIssues).length === 0) {
+    const schemaCheck = validateGameBundle(bundle);
+    if (!schemaCheck.valid) {
+      bundleLevelErrors.push(schemaCheck.error);
+      allErrorMessages.push(schemaCheck.error);
+    }
   }
 
   const isValid =

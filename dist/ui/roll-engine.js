@@ -1,8 +1,8 @@
 import {
 
+  createConstrainedRollResults,
   createRunSummary,
   cryptoRandomOrMathRandom,
-  selectUniform,
 } from '../core/index.js';
 import { Icons } from './icons.js';
 
@@ -111,6 +111,7 @@ export class SequentialRollController {
           currentCategoryIndex = 0;
           landedOption                = null;
           results               = [];
+          plannedResults               = [];
           rng              ;
 
           activeTimers           = [];
@@ -149,10 +150,14 @@ export class SequentialRollController {
   }
 
          startSequence(bundle            , immediateResolveForTests = false)       {
+    const nextBundle = JSON.parse(JSON.stringify(bundle))              ;
+    const nextPlan = createConstrainedRollResults(nextBundle, this.rng);
+
     this.clearTimers();
-    this.bundle = JSON.parse(JSON.stringify(bundle))              ;
+    this.bundle = nextBundle;
     this.currentCategoryIndex = 0;
     this.results = [];
+    this.plannedResults = nextPlan;
     this.landedOption = null;
     this.prepareCategoryReadyState();
 
@@ -190,7 +195,10 @@ export class SequentialRollController {
     this.clearTimers();
     this.stage = 'ROLLING';
 
-    const chosenOutcome = selectUniform(category.options, this.rng);
+    const chosenOutcome = this.plannedResults[this.currentCategoryIndex]?.selectedOption;
+    if (!chosenOutcome) {
+      throw new Error(`Missing planned outcome for category "${category.name}".`);
+    }
     this.landedOption = chosenOutcome;
     const track = buildTumblerReelTrack(category.options, chosenOutcome);
     this.activeReelTrack = track;
@@ -317,6 +325,7 @@ export class SequentialRollController {
     this.currentCategoryIndex = 0;
     this.landedOption = null;
     this.results = [];
+    this.plannedResults = [];
     this.activeReelTrack = null;
     this.onAbortRun();
   }

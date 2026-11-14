@@ -1,4 +1,4 @@
-import {                  isValidRank } from '../core/index.js';
+import {                  isValidRank, validateGameBundle } from '../core/index.js';
 
 export function evaluateBundleGuardrails(bundle            )                         {
   let titleError                = null;
@@ -55,6 +55,14 @@ export function evaluateBundleGuardrails(bundle            )                    
         allErrorMessages.push(...messages);
       }
     });
+  }
+
+  if (titleError === null && bundleLevelErrors.length === 0 && Object.keys(categoryIssues).length === 0) {
+    const schemaCheck = validateGameBundle(bundle);
+    if (!schemaCheck.valid) {
+      bundleLevelErrors.push(schemaCheck.error);
+      allErrorMessages.push(schemaCheck.error);
+    }
   }
 
   const isValid =

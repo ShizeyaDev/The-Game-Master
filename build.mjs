@@ -12,6 +12,7 @@ const STANDALONE_HTML_PATH = path.join(__dirname, 'the-game-master.html');
 
 function cleanWhitespace(code) {
   return code
+    .replace(/\r\n?/g, '\n')
     .replace(/[ \t]+$/gm, '')
     .replace(/\n{3,}/g, '\n\n')
     .trim();
@@ -47,6 +48,7 @@ function compileDirectory(srcDir, outDir) {
 const BUNDLE_ORDER = [
   'core/types.ts',
   'core/rng.ts',
+  'core/constraints.ts',
   'core/difficulty.ts',
   'core/seed.ts',
   'core/storage.ts',

@@ -273,7 +273,13 @@ export class GameMasterUIController {
     this.completedRunSummary = null;
     this.statusBanner = null;
     this.viewMode = 'ROLL_SEQUENCE';
-    this.rollController.startSequence(target);
+    try {
+      this.rollController.startSequence(target);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Unable to create a valid random configuration.';
+      this.viewMode = 'LIBRARY';
+      this.setStatusBanner('error', message, 10000);
+    }
   }
 
   private handleExportLibrary(): void {

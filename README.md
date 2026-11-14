@@ -15,6 +15,11 @@ Gamers frequently spend hours in configuration menus, mod managers, and characte
 
 - **Strict Uniform Randomness ($1/N$):** Without preset constraints, every option inside a category has an identical chance of rolling. Ranks never alter selection odds.
 - **Playability Guardrails:** A preset may cap dangerous ranks, reject incompatible option combinations, and require numeric settings (such as biome percentages) to reach a valid total. The engine draws complete uniform configurations until one satisfies every rule.
+- **Explicit Unrestricted Override:** Guarded presets expose an `UNRESTRICTED RNG` checkbox. It bypasses guardrails for that run and adds a playability warning plus any violated rules to the final dossier.
+- **Fast Mode:** Every game card exposes a `FAST MODE` checkbox that skips reel animations and per-category confirmation while preserving the exact same generated result and active guardrails.
+- **Minimum Severity (Experimental):** Optionally require a minimum `Run Difficulty Rating` from `1.00` to `7.00`. Enabling it automatically bypasses every playability safeguard, rerolls complete unrestricted plans until the threshold is reached, and reports the attempt count and violated guardrails in the final dossier. Unlikely targets can temporarily freeze the application while synchronous retries are evaluated.
+- **Application Checklist:** The final dossier provides one checkbox per mandate, live progress, bulk mark/clear controls, and Markdown checklist export.
+- **7 Days to Die SandboxCode:** V3.4 protocol results include a copyable `SandboxCode`. Each checklist card is labeled `SANDBOX CODE` or `MANUAL SETUP`, so world-generation and server-only decisions remain explicit.
 - **5-Second Vertical Tumbler:** A mechanical card-reel that accelerates and smoothly decelerates before snapping onto the center reticle.
 - **F to S Difficulty Rating:** Options are mapped from **Tier F** (Trivial) to **Tier S** (Brutal Ordeal). The Arbiter aggregates your final score into an overall run severity grade.
 - **Hazard Outlier Rule:** Rolling even a single S-tier constraint flags the entire run as hazardous and clamps the minimum run severity to B.
@@ -34,7 +39,7 @@ Constraints are validated during import and saved with the preset. Existing pres
 
 The maintained 7 Days to Die protocol is available at
 `presets/7-days-to-die-v3.4-protocol.json`; editing and synchronization instructions are documented in
-`docs/PROTOCOLO-7-DAYS-TO-DIE.md`.
+`docs/7-DAYS-TO-DIE-PROTOCOL.md`.
 
 ---
 

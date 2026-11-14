@@ -3,6 +3,7 @@ import {
 
   createDefaultSeedBundle,
   createRunSummary,
+  generate7DaysToDieSandboxCode,
 } from '../core/index.js';
 import {
   RANK_SEVERITY_DESCRIPTIONS,
@@ -168,14 +169,185 @@ export function runPhase3And4Verification()       {
     'No warning banner should render when no S-rank option was rolled'
   );
 
+  const checklistHtml = renderResultsDossierMarkup(noHazardSummary, false, new Set([0]));
+  assert(
+    checklistHtml.includes('1 / 2 APPLIED') &&
+      checklistHtml.includes('data-field="dossier-checklist-item"') &&
+      checklistHtml.includes('Mark All Applied') &&
+      checklistHtml.includes('Clear Checklist'),
+    'Dossier must render interactive checklist state and bulk controls'
+  );
+
   const markdown = formatRunDossierMarkdown(clampedSummary);
   assert(
     markdown.includes('# THE GAME MASTER // ARBITER FINAL VERDICT'),
     'Markdown export must include main header'
   );
+  assert(markdown.includes('- [ ] **MANDATE 01'), 'Markdown dossier must export checklist items');
   assert(
     markdown.includes('[ ! ] HAZARD OVERRIDE: S-Tier condition elevated minimum run rating to B.'),
     'Markdown export for clamped run must include HAZARD OVERRIDE callout'
+  );
+
+  const sandboxBundle = createDefaultSeedBundle();
+  sandboxBundle.title = '7 Days to Die V3.4 Protocol';
+  const sandboxSummary = createRunSummary(sandboxBundle, [
+    { categoryId: 'ranged', categoryName: '[Player] Ranged Damage', selectedOption: { id: 'ranged-150', label: '150%', rank: 'B' } },
+    { categoryId: 'melee', categoryName: '[Player] Melee Damage', selectedOption: { id: 'melee-150', label: '150%', rank: 'B' } },
+    { categoryId: 'incoming', categoryName: '[Player] Player Damage In (Incoming)', selectedOption: { id: 'incoming-75', label: '75%', rank: 'C' } },
+    { categoryId: 'smell', categoryName: '[Entities] AI Smell Mode', selectedOption: { id: 'smell-jog', label: 'Jog', rank: 'C' } },
+    { categoryId: 'world-size', categoryName: '[World Gen] World Size', selectedOption: { id: 'world-8k', label: '8192 (8K - Default)', rank: 'C' } },
+  ]);
+  const sandboxGeneration = generate7DaysToDieSandboxCode(sandboxSummary);
+  assert(
+    sandboxGeneration?.code === 'AAAJABJARFBNC',
+    `Expected known SandboxCode AAAJABJARFBNC, got ${sandboxGeneration?.code ?? 'null'}`
+  );
+  assert(
+    sandboxGeneration.handledResultIndexes.size === 4 && sandboxGeneration.omissions.length === 1,
+    'SandboxCode generation must distinguish encoded/defaulted mandates from manual setup'
+  );
+  const sandboxHtml = renderResultsDossierMarkup(sandboxSummary);
+  assert(
+    sandboxHtml.includes('Generated SandboxCode') &&
+      sandboxHtml.includes('value="AAAJABJARFBNC"') &&
+      sandboxHtml.includes('Copy SandboxCode') &&
+      sandboxHtml.includes('SANDBOX CODE') &&
+      sandboxHtml.includes('MANUAL SETUP'),
+    '7 Days to Die dossier must render a copyable SandboxCode and delivery labels'
+  );
+  const sandboxMarkdown = formatRunDossierMarkdown(sandboxSummary);
+  assert(
+    sandboxMarkdown.includes('**SandboxCode:** `AAAJABJARFBNC`'),
+    'Markdown dossier must include the generated SandboxCode'
+  );
+
+  const unrestrictedSummary = createRunSummary(
+    testBundle,
+    clampedSummary.results,
+    Date.now(),
+    {
+      constraintsBypassed: true,
+      constraintWarnings: ['Ranged and melee damage cannot both be disabled.'],
+    }
+  );
+  const unrestrictedHtml = renderResultsDossierMarkup(unrestrictedSummary);
+  assert(
+    unrestrictedHtml.includes('UNRESTRICTED RNG // PLAYABILITY NOT GUARANTEED') &&
+      unrestrictedHtml.includes('could make the game unplayable') &&
+      unrestrictedHtml.includes('Ranged and melee damage cannot both be disabled.'),
+    'Unrestricted result must display a prominent playability warning and violated rules'
+  );
+  const unrestrictedMarkdown = formatRunDossierMarkdown(unrestrictedSummary);
+  assert(
+    unrestrictedMarkdown.includes('UNRESTRICTED RNG WAS USED') &&
+      unrestrictedMarkdown.includes('Ranged and melee damage cannot both be disabled.'),
+    'Unrestricted Markdown dossier must preserve the playability warning'
+  );
+
+  let bypassedControllerSummary                    = null;
+  const bypassedBundle = createDefaultSeedBundle();
+  bypassedBundle.constraints = {
+    rankLimits: [{ ranks: ['S'], max: 0, reason: 'S-rank outcomes are forbidden in protected mode.' }],
+  };
+  const bypassedController = new SequentialRollController({
+    onStateChange: () => {},
+    onAbortRun: () => {},
+    onCompleteRun: (summary) => {
+      bypassedControllerSummary = summary;
+    },
+    rng: () => 0.99,
+  });
+  bypassedController.startSequence(bypassedBundle, false, true);
+  for (let i = 0; i < bypassedBundle.categories.length; i++) {
+    bypassedController.initiateCategoryRoll(true);
+    bypassedController.advanceToNextStep(true);
+  }
+  assert(
+    bypassedControllerSummary?.constraintsBypassed === true &&
+      bypassedControllerSummary.constraintWarnings.includes(
+        'S-rank outcomes are forbidden in protected mode.'
+      ),
+    'Controller bypass mode must roll freely and audit violations in the completed summary'
+  );
+
+  let fastModeSummary                    = null;
+  const fastModeController = new SequentialRollController({
+    onStateChange: () => {},
+    onAbortRun: () => {},
+    onCompleteRun: (summary) => {
+      fastModeSummary = summary;
+    },
+    rng: () => 0.5,
+  });
+  fastModeController.startSequence(testBundle, false, false, true);
+  assert(
+    fastModeController.getSnapshot().stage === 'COMPLETE' &&
+      fastModeSummary?.results.length === testBundle.categories.length,
+    'Fast mode must skip every interaction and complete the full sequence immediately'
+  );
+
+  const thresholdBundle = createDefaultSeedBundle();
+  thresholdBundle.categories = [
+    {
+      id: 'severity-test',
+      name: 'Severity Test',
+      options: [
+        { id: 'severity-low', label: 'Low', rank: 'F' },
+        { id: 'severity-high', label: 'High', rank: 'S' },
+      ],
+    },
+  ];
+  const thresholdRngValues = [0, 0.99];
+  let thresholdSummary                    = null;
+  const thresholdController = new SequentialRollController({
+    onStateChange: () => {},
+    onAbortRun: () => {},
+    onCompleteRun: (summary) => {
+      thresholdSummary = summary;
+    },
+    rng: () => thresholdRngValues.shift() ?? 0.99,
+  });
+  thresholdController.startSequence(thresholdBundle, false, false, true, 4);
+  assert(
+    thresholdSummary?.numericalScore === 7 &&
+      thresholdSummary.minimumSeverityRequested === 4 &&
+      thresholdSummary.severityGenerationAttempts === 2,
+    'Minimum severity mode must reroll complete plans until the requested rating is reached'
+  );
+  const thresholdHtml = renderResultsDossierMarkup(thresholdSummary );
+  assert(
+    thresholdHtml.includes('MINIMUM TARGET SATISFIED // ≥ 4.00') &&
+      thresholdHtml.includes('2 complete plan rolls evaluated.'),
+    'Dossier must report the satisfied minimum severity target and attempt count'
+  );
+
+  let impossibleThresholdRejected = false;
+  try {
+    thresholdBundle.categories[0].options = [{ id: 'severity-low', label: 'Low', rank: 'F' }];
+    thresholdController.startSequence(thresholdBundle, false, false, true, 4);
+  } catch (error) {
+    impossibleThresholdRejected =
+      error instanceof Error && error.message.includes('theoretical maximum');
+  }
+  assert(
+    impossibleThresholdRejected,
+    'Minimum severity mode must reject a target above the theoretical option-pool maximum'
+  );
+
+  thresholdBundle.categories[0].options = [
+    { id: 'severity-low', label: 'Low', rank: 'F' },
+    { id: 'severity-high', label: 'High', rank: 'S' },
+  ];
+  thresholdBundle.constraints = {
+    rankLimits: [{ ranks: ['S'], max: 0, reason: 'S-rank outcomes are disabled.' }],
+  };
+  thresholdController.startSequence(thresholdBundle, false, false, true, 7);
+  assert(
+    thresholdSummary?.numericalScore === 7 &&
+      thresholdSummary.constraintsBypassed === true &&
+      thresholdSummary.constraintWarnings.includes('S-rank outcomes are disabled.'),
+    'Minimum severity mode must force unrestricted generation and audit bypassed safeguards'
   );
 
   controller.startSequence(testBundle, false);

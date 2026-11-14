@@ -17,6 +17,8 @@ import {
   evaluateBundleGuardrails,
 } from './validation.js';
 
+const DEFAULT_MINIMUM_SEVERITY = 4;
+
 function generateId(prefix        )         {
   const randomPart = Math.random().toString(36).substring(2, 9);
   const timePart = Date.now().toString(36).slice(-4);
@@ -47,11 +49,15 @@ export class GameMasterUIController {
           importErrorMessage                = null;
           statusBanner                      = null;
           statusTimeoutId                = null;
+          bypassConstraintBundleIds = new Set        ();
+          fastModeBundleIds = new Set        ();
+          minimumSeverityByBundleId = new Map                ();
 
           onBeginSequenceCallback                        ;
           onSequenceCompleteCallback                           ;
                    rollController                          ;
           completedRunSummary                    = null;
+          completedChecklistIndices = new Set        ();
           dossierCopyConfirmed = false;
           copyResetTimeoutId                = null;
 
@@ -80,6 +86,7 @@ export class GameMasterUIController {
       },
       onCompleteRun: (summary            ) => {
         this.completedRunSummary = summary;
+        this.completedChecklistIndices.clear();
         this.dossierCopyConfirmed = false;
         if (this.onSequenceCompleteCallback) {
           this.onSequenceCompleteCallback(summary);
@@ -251,6 +258,12 @@ export class GameMasterUIController {
       return;
     }
 
+    const fastMode = this.fastModeBundleIds.has(bundleId);
+    const minimumSeverity = this.minimumSeverityByBundleId.get(bundleId) ?? null;
+    const bypassConstraints =
+      Boolean(target.constraints) &&
+      (this.bypassConstraintBundleIds.has(bundleId) || minimumSeverity !== null);
+
     if (this.onBeginSequenceCallback) {
       this.onBeginSequenceCallback(target);
       return;
@@ -260,7 +273,13 @@ export class GameMasterUIController {
     this.statusBanner = null;
     this.viewMode = 'ROLL_SEQUENCE';
     try {
-      this.rollController.startSequence(target);
+      this.rollController.startSequence(
+        target,
+        false,
+        bypassConstraints,
+        fastMode,
+        minimumSeverity
+      );
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Unable to create a valid random configuration.';
       this.viewMode = 'LIBRARY';
@@ -563,8 +582,24 @@ export class GameMasterUIController {
         case 'copy-run-dossier':
           this.handleCopyRunDossier();
           break;
+        case 'copy-sandbox-code':
+          this.handleCopySandboxCode();
+          break;
+        case 'check-all-dossier-items':
+          if (this.completedRunSummary) {
+            this.completedRunSummary.results.forEach((_, index) =>
+              this.completedChecklistIndices.add(index)
+            );
+            this.render();
+          }
+          break;
+        case 'clear-dossier-checklist':
+          this.completedChecklistIndices.clear();
+          this.render();
+          break;
         case 'return-to-library':
           this.completedRunSummary = null;
+          this.completedChecklistIndices.clear();
           this.dossierCopyConfirmed = false;
           this.viewMode = 'LIBRARY';
           this.render();
@@ -589,6 +624,66 @@ export class GameMasterUIController {
 
       if (field === 'import-json-textarea') {
         this.importDraftText = target.value;
+        return;
+      }
+
+      if (field === 'bypass-constraints') {
+        const bundleId = target.getAttribute('data-bundle-id') ?? '';
+        if (target instanceof HTMLInputElement && target.checked) {
+          this.bypassConstraintBundleIds.add(bundleId);
+        } else {
+          this.bypassConstraintBundleIds.delete(bundleId);
+        }
+        return;
+      }
+
+      if (field === 'fast-mode') {
+        const bundleId = target.getAttribute('data-bundle-id') ?? '';
+        if (target instanceof HTMLInputElement && target.checked) {
+          this.fastModeBundleIds.add(bundleId);
+        } else {
+          this.fastModeBundleIds.delete(bundleId);
+        }
+        return;
+      }
+
+      if (field === 'minimum-severity-enabled') {
+        const bundleId = target.getAttribute('data-bundle-id') ?? '';
+        if (target instanceof HTMLInputElement && target.checked) {
+          this.minimumSeverityByBundleId.set(
+            bundleId,
+            this.minimumSeverityByBundleId.get(bundleId) ?? DEFAULT_MINIMUM_SEVERITY
+          );
+        } else {
+          this.minimumSeverityByBundleId.delete(bundleId);
+        }
+        this.render();
+        return;
+      }
+
+      if (field === 'minimum-severity-threshold') {
+        const bundleId = target.getAttribute('data-bundle-id') ?? '';
+        const parsed = Number(target.value);
+        if (Number.isFinite(parsed) && parsed >= 1 && parsed <= 7) {
+          this.minimumSeverityByBundleId.set(bundleId, parsed);
+        }
+        return;
+      }
+
+      if (field === 'dossier-checklist-item') {
+        const resultIndex = Number(target.getAttribute('data-result-index'));
+        if (Number.isInteger(resultIndex) && resultIndex >= 0) {
+          if (target instanceof HTMLInputElement && target.checked) {
+            this.completedChecklistIndices.add(resultIndex);
+          } else {
+            this.completedChecklistIndices.delete(resultIndex);
+          }
+          target.closest('.tgm-dossier-card')?.classList.toggle('is-checked', target.checked);
+          const progress = this.root.querySelector             ('[data-role="dossier-checklist-progress"]');
+          if (progress && this.completedRunSummary) {
+            progress.textContent = `${this.completedChecklistIndices.size} / ${this.completedRunSummary.results.length} APPLIED`;
+          }
+        }
         return;
       }
 
@@ -858,6 +953,11 @@ export class GameMasterUIController {
     const metrics = computeBundleMetrics(bundle);
     const report = evaluateBundleGuardrails(bundle);
     const updatedDate = new Date(bundle.updatedAt).toISOString().slice(0, 10);
+    const fastMode = this.fastModeBundleIds.has(bundle.id);
+    const minimumSeverity = this.minimumSeverityByBundleId.get(bundle.id);
+    const minimumSeverityForcesBypass = minimumSeverity !== undefined;
+    const bypassConstraints =
+      this.bypassConstraintBundleIds.has(bundle.id) || minimumSeverityForcesBypass;
 
     return `
       <article class="tgm-bundle-card ${!report.isValid ? 'has-validation-warning' : ''}">
@@ -899,6 +999,73 @@ export class GameMasterUIController {
         </div>
 
         <div class="tgm-card-actions">
+          <label class="tgm-fast-mode-toggle">
+            <input
+              type="checkbox"
+              data-field="fast-mode"
+              data-bundle-id="${escapeHtml(bundle.id)}"
+              ${fastMode ? 'checked' : ''}
+            />
+            <span class="tgm-fast-mode-toggle-copy">
+              <strong>FAST MODE</strong>
+              <small>Skip every reel and open the complete final dossier instantly.</small>
+            </span>
+          </label>
+          <div class="tgm-minimum-severity-control">
+            <div class="tgm-minimum-severity-experimental" role="note">
+              ${Icons.alertDiamond}
+              <span>EXPERIMENTAL // BYPASSES ALL SAFEGUARDS // MAY FREEZE THE APPLICATION</span>
+            </div>
+            <label class="tgm-minimum-severity-toggle">
+              <input
+                type="checkbox"
+                data-field="minimum-severity-enabled"
+                data-bundle-id="${escapeHtml(bundle.id)}"
+                ${minimumSeverity !== undefined ? 'checked' : ''}
+              />
+              <span class="tgm-minimum-severity-copy">
+                <strong>MINIMUM SEVERITY</strong>
+                <small>Rerolls the complete plan to reach the target and automatically disables every playability safeguard.</small>
+              </span>
+            </label>
+            <label class="tgm-minimum-severity-value">
+              <span>RUN RATING ≥</span>
+              <input
+                type="number"
+                min="1"
+                max="7"
+                step="0.25"
+                value="${(minimumSeverity ?? DEFAULT_MINIMUM_SEVERITY).toFixed(2)}"
+                data-field="minimum-severity-threshold"
+                data-bundle-id="${escapeHtml(bundle.id)}"
+                ${minimumSeverity === undefined ? 'disabled' : ''}
+                aria-label="Minimum run difficulty rating"
+              />
+            </label>
+          </div>
+          ${
+            bundle.constraints
+              ? `
+          <label class="tgm-unrestricted-toggle">
+            <input
+              type="checkbox"
+              data-field="bypass-constraints"
+              data-bundle-id="${escapeHtml(bundle.id)}"
+              ${bypassConstraints ? 'checked' : ''}
+              ${minimumSeverityForcesBypass ? 'disabled' : ''}
+            />
+            <span class="tgm-unrestricted-toggle-copy">
+              <strong>UNRESTRICTED RNG</strong>
+              <small>${
+                minimumSeverityForcesBypass
+                  ? 'Forced by Minimum Severity. Final verdict will audit all violated guardrails.'
+                  : 'Bypasses playability guardrails. Final verdict will audit the result.'
+              }</small>
+            </span>
+          </label>
+          `
+              : ''
+          }
           <button
             type="button"
             class="tgm-btn tgm-btn-launch"
@@ -1423,6 +1590,27 @@ export class GameMasterUIController {
     }
   }
 
+          handleCopySandboxCode()       {
+    const output = this.root.querySelector                  ('[data-role="sandbox-code-output"]');
+    if (!output || output.value.length === 0) {
+      return;
+    }
+
+    const code = output.value;
+    const markCopied = () =>
+      this.setStatusBanner('success', 'SandboxCode copied to clipboard.', 2500);
+
+    if (typeof navigator !== 'undefined' && navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(markCopied).catch(() => {
+        this.fallbackCopyText(code);
+        markCopied();
+      });
+    } else {
+      this.fallbackCopyText(code);
+      markCopied();
+    }
+  }
+
           fallbackCopyText(text        )       {
     if (typeof document === 'undefined') {
       return;
@@ -1444,6 +1632,10 @@ export class GameMasterUIController {
     if (!this.completedRunSummary) {
       return '';
     }
-    return renderResultsDossierMarkup(this.completedRunSummary, this.dossierCopyConfirmed);
+    return renderResultsDossierMarkup(
+      this.completedRunSummary,
+      this.dossierCopyConfirmed,
+      this.completedChecklistIndices
+    );
   }
 }

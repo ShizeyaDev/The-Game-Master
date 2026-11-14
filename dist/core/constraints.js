@@ -123,12 +123,31 @@ export function getConstraintViolations(
   return violations;
 }
 
+export function createUnconstrainedRollResults(
+  bundle            ,
+  rng               = cryptoRandomOrMathRandom
+)               {
+  if (!bundle.categories || bundle.categories.length === 0) {
+    throw new Error(`Game "${bundle.title}" has no categories to roll.`);
+  }
+
+  return bundle.categories.map((category) => ({
+    categoryId: category.id,
+    categoryName: category.name,
+    selectedOption: selectUniform(category.options, rng),
+  }));
+}
+
 export function createConstrainedRollResults(
   bundle            ,
   rng               = cryptoRandomOrMathRandom
 )               {
   if (!bundle.categories || bundle.categories.length === 0) {
     throw new Error(`Game "${bundle.title}" has no categories to roll.`);
+  }
+
+  if (!bundle.constraints) {
+    return createUnconstrainedRollResults(bundle, rng);
   }
 
   const maxAttempts = bundle.constraints?.maxAttempts ?? DEFAULT_CONSTRAINT_ATTEMPTS;

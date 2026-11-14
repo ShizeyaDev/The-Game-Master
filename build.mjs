@@ -49,6 +49,7 @@ const BUNDLE_ORDER = [
   'core/types.ts',
   'core/rng.ts',
   'core/constraints.ts',
+  'core/sandbox-code.ts',
   'core/difficulty.ts',
   'core/seed.ts',
   'core/storage.ts',

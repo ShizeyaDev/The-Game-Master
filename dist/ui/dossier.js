@@ -1,4 +1,7 @@
-import {                            } from '../core/index.js';
+import {
+
+  generate7DaysToDieSandboxCode,
+} from '../core/index.js';
 import { Icons } from './icons.js';
 import { RANK_SEVERITY_DESCRIPTIONS } from './roll-engine.js';
 
@@ -37,12 +40,47 @@ export function formatRunDossierMarkdown(summary            )         {
     lines.push(`> ${summary.hazardBannerMessage}`);
   }
 
+  if (summary.minimumSeverityRequested !== null) {
+    lines.push(
+      `**Minimum Severity Target:** >= ${summary.minimumSeverityRequested.toFixed(2)}`,
+      `**Generation Attempts:** ${summary.severityGenerationAttempts}`
+    );
+  }
+
+  if (summary.constraintsBypassed) {
+    lines.push(
+      '> [!WARNING] UNRESTRICTED RNG WAS USED. PLAYABILITY WAS NOT GUARANTEED.'
+    );
+    if (summary.constraintWarnings.length > 0) {
+      lines.push('>', '> Violated playability guardrails:');
+      summary.constraintWarnings.forEach((warning) => lines.push(`> - ${warning}`));
+    } else {
+      lines.push('> No configured incompatibility was detected in this result.');
+    }
+  }
+
+  const sandboxCode = generate7DaysToDieSandboxCode(summary);
+  if (sandboxCode) {
+    lines.push(
+      '',
+      '## 7 DAYS TO DIE SANDBOX CODE',
+      `**Schema:** V${sandboxCode.version}`,
+      `**SandboxCode:** \`${sandboxCode.code}\``,
+      `**Encoded or defaulted mandates:** ${sandboxCode.handledResultIndexes.size} / ${summary.results.length}`
+    );
+    if (sandboxCode.omissions.length > 0) {
+      lines.push(
+        `> ${sandboxCode.omissions.length} mandate${sandboxCode.omissions.length === 1 ? '' : 's'} must be applied manually or reviewed because they are outside the V${sandboxCode.version} SandboxCode schema.`
+      );
+    }
+  }
+
   lines.push('', '## SEALED MANDATE BREAKDOWN');
 
   summary.results.forEach((res, idx) => {
     const num = String(idx + 1).padStart(2, '0');
     lines.push(
-      `- **MANDATE ${num} // ${res.categoryName.toUpperCase()}:** ${res.selectedOption.label} \`[RANK ${res.selectedOption.rank}]\``
+      `- [ ] **MANDATE ${num} // ${res.categoryName.toUpperCase()}:** ${res.selectedOption.label} \`[RANK ${res.selectedOption.rank}]\``
     );
   });
 
@@ -51,17 +89,24 @@ export function formatRunDossierMarkdown(summary            )         {
   return lines.join('\n');
 }
 
-export function renderResultsDossierMarkup(summary            , copyConfirmed = false)         {
+export function renderResultsDossierMarkup(
+  summary            ,
+  copyConfirmed = false,
+  checkedResultIndexes                      = new Set        ()
+)         {
   const scoreReadout = `${summary.numericalScore.toFixed(2)} / 7.00 SEVERITY`;
   const isoTimestamp = new Date(summary.timestamp).toISOString().replace('T', ' ').slice(0, 19);
   const rankSubtitle = OVERALL_RANK_TITLES[summary.overallRank];
+  const sandboxCode = generate7DaysToDieSandboxCode(summary);
 
   const mandateCardsHtml = summary.results
     .map((res, idx) => {
       const mandateNum = String(idx + 1).padStart(2, '0');
       const shortTierTag = RANK_SEVERITY_DESCRIPTIONS[res.selectedOption.rank];
+      const isChecked = checkedResultIndexes.has(idx);
+      const isHandledBySandboxCode = sandboxCode?.handledResultIndexes.has(idx) ?? false;
       return `
-        <article class="tgm-dossier-card tgm-dossier-card-rank-${res.selectedOption.rank}">
+        <article class="tgm-dossier-card tgm-dossier-card-rank-${res.selectedOption.rank} ${isChecked ? 'is-checked' : ''}">
           <div class="tgm-dossier-card-top">
             <div class="tgm-dossier-card-meta">
               <span class="tgm-dossier-mandate-num">MANDATE ${mandateNum}</span>
@@ -71,11 +116,27 @@ export function renderResultsDossierMarkup(summary            , copyConfirmed = 
               <span class="tgm-dossier-rank-prefix">RANK</span>
               <span class="tgm-dossier-rank-letter">${res.selectedOption.rank}</span>
             </div>
+            <label class="tgm-dossier-check-item">
+              <input
+                type="checkbox"
+                data-field="dossier-checklist-item"
+                data-result-index="${idx}"
+                ${isChecked ? 'checked' : ''}
+              />
+              <span>APPLIED</span>
+            </label>
           </div>
 
           <div class="tgm-dossier-card-body">
             <div class="tgm-dossier-option-label">${escapeHtml(res.selectedOption.label)}</div>
             <div class="tgm-dossier-option-note">${escapeHtml(shortTierTag)}</div>
+            ${
+              sandboxCode
+                ? `<div class="tgm-dossier-delivery-tag ${isHandledBySandboxCode ? 'is-code' : 'is-manual'}">
+                    ${isHandledBySandboxCode ? 'SANDBOX CODE' : 'MANUAL SETUP'}
+                  </div>`
+                : ''
+            }
           </div>
         </article>
       `;
@@ -107,6 +168,15 @@ export function renderResultsDossierMarkup(summary            , copyConfirmed = 
         </div>
 
         ${
+          summary.minimumSeverityRequested !== null
+            ? `<div class="tgm-minimum-severity-result" data-role="minimum-severity-result">
+                <strong>MINIMUM TARGET SATISFIED // ≥ ${summary.minimumSeverityRequested.toFixed(2)}</strong>
+                <span>${summary.severityGenerationAttempts.toLocaleString('en-US')} complete plan roll${summary.severityGenerationAttempts === 1 ? '' : 's'} evaluated.</span>
+              </div>`
+            : ''
+        }
+
+        ${
           summary.hazardBannerMessage
             ? `
           <div class="tgm-hazard-outlier-banner" role="alert" data-role="hazard-outlier-banner">
@@ -115,11 +185,86 @@ export function renderResultsDossierMarkup(summary            , copyConfirmed = 
         `
             : ''
         }
+
+        ${
+          summary.constraintsBypassed
+            ? `
+          <div class="tgm-unrestricted-result-warning" role="alert" data-role="unrestricted-result-warning">
+            <strong>UNRESTRICTED RNG // PLAYABILITY NOT GUARANTEED</strong>
+            <p>
+              ${
+                summary.constraintWarnings.length > 0
+                  ? `This result violated ${summary.constraintWarnings.length} configured guardrail${summary.constraintWarnings.length === 1 ? '' : 's'} and could make the game unplayable.`
+                  : 'All guardrails were bypassed. No configured incompatibility was detected, but this result was not protected.'
+              }
+            </p>
+            ${
+              summary.constraintWarnings.length > 0
+                ? `<ul>${summary.constraintWarnings.map((warning) => `<li>${escapeHtml(warning)}</li>`).join('')}</ul>`
+                : ''
+            }
+          </div>
+        `
+            : ''
+        }
       </div>
+
+      ${
+        sandboxCode
+          ? `
+      <section class="tgm-sandbox-code-panel" data-role="sandbox-code-panel">
+        <div class="tgm-sandbox-code-heading">
+          <div>
+            <span class="tgm-sandbox-code-kicker">7 DAYS TO DIE // V${sandboxCode.version}</span>
+            <h3>Generated SandboxCode</h3>
+          </div>
+          <span class="tgm-sandbox-code-coverage">
+            ${sandboxCode.handledResultIndexes.size} / ${summary.results.length} MANDATES ENCODED OR DEFAULTED
+          </span>
+        </div>
+        <div class="tgm-sandbox-code-copy-row">
+          <input
+            type="text"
+            readonly
+            value="${escapeHtml(sandboxCode.code)}"
+            data-role="sandbox-code-output"
+            aria-label="Generated 7 Days to Die SandboxCode"
+          />
+          <button type="button" class="tgm-btn tgm-btn-primary" data-action="copy-sandbox-code">
+            ${Icons.clipboardCopy}
+            <span>Copy SandboxCode</span>
+          </button>
+        </div>
+        <p class="tgm-sandbox-code-help">
+          Paste this value into the game's Sandbox Options code field or the
+          <code>SandboxCode</code> property in <code>serverconfig.xml</code>.
+        </p>
+        ${
+          sandboxCode.omissions.length > 0
+            ? `<div class="tgm-sandbox-code-warning" role="note">
+                ${sandboxCode.omissions.length} mandate${sandboxCode.omissions.length === 1 ? '' : 's'} cannot be represented by this code. Complete the items marked <strong>MANUAL SETUP</strong> in the checklist.
+              </div>`
+            : ''
+        }
+      </section>
+      `
+          : ''
+      }
 
       <div class="tgm-dossier-section-header">
         <div>
           <h3 class="tgm-section-title">Sealed Mandate Breakdown (${summary.results.length})</h3>
+          <span class="tgm-dossier-checklist-progress" data-role="dossier-checklist-progress">
+            ${checkedResultIndexes.size} / ${summary.results.length} APPLIED
+          </span>
+        </div>
+        <div class="tgm-dossier-checklist-actions">
+          <button type="button" class="tgm-btn tgm-btn-ghost" data-action="check-all-dossier-items">
+            <span>Mark All Applied</span>
+          </button>
+          <button type="button" class="tgm-btn tgm-btn-ghost" data-action="clear-dossier-checklist">
+            <span>Clear Checklist</span>
+          </button>
         </div>
       </div>
 

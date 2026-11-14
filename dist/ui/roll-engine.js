@@ -1,8 +1,12 @@
 import {
 
   createConstrainedRollResults,
+  createUnconstrainedRollResults,
   createRunSummary,
   cryptoRandomOrMathRandom,
+  evaluateRunDifficulty,
+  getConstraintViolations,
+  rankToNumber,
 } from '../core/index.js';
 import { Icons } from './icons.js';
 
@@ -12,6 +16,54 @@ export const TUMBLER_CENTER_OFFSET_PX = 76;
 export const TUMBLER_HIGH_SPEED_MS = 2500;
 export const TUMBLER_DECEL_MS = 2300;
 export const TUMBLER_TOTAL_DURATION_MS = 5000;
+export const DEFAULT_MINIMUM_SEVERITY_ATTEMPTS = 10000;
+
+function calculateSeverityUpperBound(bundle            , bypassConstraints         )         {
+  const rankLimits = bypassConstraints ? [] : bundle.constraints?.rankLimits ?? [];
+  if (rankLimits.length === 0) {
+    return (
+      bundle.categories.reduce(
+        (total, category) =>
+          total + Math.max(...category.options.map((option) => rankToNumber(option.rank))),
+        0
+      ) / bundle.categories.length
+    );
+  }
+
+  // Dynamic programming produces an upper bound that respects every global rank cap.
+  // Forbidden combinations and numeric constraints can only lower this value further.
+  let states = new Map                ([
+    [rankLimits.map(() => 0).join(','), 0],
+  ]);
+
+  for (const category of bundle.categories) {
+    const nextStates = new Map                ();
+    const distinctRanks = [...new Set(category.options.map((option) => option.rank))];
+    for (const [stateKey, total] of states) {
+      const counts = stateKey.split(',').map(Number);
+      for (const rank of distinctRanks) {
+        const nextCounts = counts.map(
+          (count, index) => count + (rankLimits[index].ranks.includes(rank) ? 1 : 0)
+        );
+        if (nextCounts.some((count, index) => count > rankLimits[index].max)) {
+          continue;
+        }
+        const nextKey = nextCounts.join(',');
+        const nextTotal = total + rankToNumber(rank);
+        if (nextTotal > (nextStates.get(nextKey) ?? Number.NEGATIVE_INFINITY)) {
+          nextStates.set(nextKey, nextTotal);
+        }
+      }
+    }
+    states = nextStates;
+  }
+
+  if (states.size === 0) {
+    return 0;
+  }
+  const maximumTotal = Math.max(...states.values());
+  return maximumTotal / bundle.categories.length;
+}
 
 export const RANK_SEVERITY_DESCRIPTIONS                                 = {
   F: 'TIER F // STANDARD BASELINE',
@@ -112,6 +164,9 @@ export class SequentialRollController {
           landedOption                = null;
           results               = [];
           plannedResults               = [];
+          constraintsBypassed = false;
+          minimumSeverityRequested                = null;
+          severityGenerationAttempts = 1;
           rng              ;
 
           activeTimers           = [];
@@ -149,21 +204,84 @@ export class SequentialRollController {
     };
   }
 
-         startSequence(bundle            , immediateResolveForTests = false)       {
+         startSequence(
+    bundle            ,
+    immediateResolveForTests = false,
+    bypassConstraints = false,
+    fastMode = false,
+    minimumSeverity                = null
+  )       {
     const nextBundle = JSON.parse(JSON.stringify(bundle))              ;
-    const nextPlan = createConstrainedRollResults(nextBundle, this.rng);
+    const effectiveBypassConstraints = bypassConstraints || minimumSeverity !== null;
+    const { results: nextPlan, attempts } = this.createPlan(
+      nextBundle,
+      effectiveBypassConstraints,
+      minimumSeverity
+    );
 
     this.clearTimers();
     this.bundle = nextBundle;
     this.currentCategoryIndex = 0;
     this.results = [];
     this.plannedResults = nextPlan;
+    this.constraintsBypassed = effectiveBypassConstraints;
+    this.minimumSeverityRequested = minimumSeverity;
+    this.severityGenerationAttempts = attempts;
     this.landedOption = null;
+    this.activeReelTrack = null;
+
+    if (fastMode) {
+      this.results = [...nextPlan];
+      this.currentCategoryIndex = Math.max(0, nextBundle.categories.length - 1);
+      this.landedOption = nextPlan[nextPlan.length - 1]?.selectedOption ?? null;
+      this.completeRun();
+      return;
+    }
+
     this.prepareCategoryReadyState();
 
     if (immediateResolveForTests) {
       this.initiateCategoryRoll(true);
     }
+  }
+
+          createPlan(
+    bundle            ,
+    bypassConstraints         ,
+    minimumSeverity
+  )                                              {
+    const createCandidate = () =>
+      bypassConstraints
+        ? createUnconstrainedRollResults(bundle, this.rng)
+        : createConstrainedRollResults(bundle, this.rng);
+
+    if (minimumSeverity === null) {
+      return { results: createCandidate(), attempts: 1 };
+    }
+    if (!Number.isFinite(minimumSeverity) || minimumSeverity < 1 || minimumSeverity > 7) {
+      throw new Error('Minimum severity must be a number from 1.00 to 7.00.');
+    }
+
+    const theoreticalMaximum = calculateSeverityUpperBound(bundle, bypassConstraints);
+    if (theoreticalMaximum < minimumSeverity) {
+      throw new Error(
+        `Minimum severity ${minimumSeverity.toFixed(2)} is impossible for this option pool. ` +
+          `The theoretical maximum is ${theoreticalMaximum.toFixed(2)}.`
+      );
+    }
+
+    for (let attempt = 1; attempt <= DEFAULT_MINIMUM_SEVERITY_ATTEMPTS; attempt++) {
+      const candidate = createCandidate();
+      if (evaluateRunDifficulty(candidate).numericalScore >= minimumSeverity) {
+        return { results: candidate, attempts: attempt };
+      }
+    }
+
+    throw new Error(
+      `Unable to reach minimum severity ${minimumSeverity.toFixed(2)} after ` +
+        `${DEFAULT_MINIMUM_SEVERITY_ATTEMPTS.toLocaleString('en-US')} valid rolls. ` +
+        'Lower the target or adjust the option ranks and playability guardrails.'
+    );
   }
 
           prepareCategoryReadyState()       {
@@ -303,9 +421,7 @@ export class SequentialRollController {
     const isLast = this.currentCategoryIndex >= this.bundle.categories.length - 1;
 
     if (isLast) {
-      this.stage = 'COMPLETE';
-      const summary = createRunSummary(this.bundle, this.results);
-      this.onCompleteRun(summary);
+      this.completeRun();
       return;
     }
 
@@ -318,6 +434,25 @@ export class SequentialRollController {
     }
   }
 
+          completeRun()       {
+    if (!this.bundle) {
+      return;
+    }
+
+    this.clearTimers();
+    this.stage = 'COMPLETE';
+    const constraintWarnings = this.constraintsBypassed
+      ? getConstraintViolations(this.bundle, this.results)
+      : [];
+    const summary = createRunSummary(this.bundle, this.results, Date.now(), {
+      constraintsBypassed: this.constraintsBypassed,
+      constraintWarnings,
+      minimumSeverityRequested: this.minimumSeverityRequested,
+      severityGenerationAttempts: this.severityGenerationAttempts,
+    });
+    this.onCompleteRun(summary);
+  }
+
          abortSequence()       {
     this.clearTimers();
     this.stage = 'IDLE';
@@ -326,6 +461,9 @@ export class SequentialRollController {
     this.landedOption = null;
     this.results = [];
     this.plannedResults = [];
+    this.constraintsBypassed = false;
+    this.minimumSeverityRequested = null;
+    this.severityGenerationAttempts = 1;
     this.activeReelTrack = null;
     this.onAbortRun();
   }

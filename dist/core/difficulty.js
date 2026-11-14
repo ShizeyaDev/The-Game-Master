@@ -87,7 +87,8 @@ export function evaluateRunDifficulty(results                       )           
 export function createRunSummary(
   bundle                                  ,
   results              ,
-  timestamp         = Date.now()
+  timestamp         = Date.now(),
+  options                    = {}
 )             {
   const evaluation = evaluateRunDifficulty(results);
 
@@ -102,6 +103,10 @@ export function createRunSummary(
     hasHazardOutlier: evaluation.hasHazardOutlier,
     wasClampedToB: evaluation.wasClampedToB,
     hazardBannerMessage: evaluation.hazardBannerMessage,
+    constraintsBypassed: options.constraintsBypassed ?? false,
+    constraintWarnings: [...(options.constraintWarnings ?? [])],
+    minimumSeverityRequested: options.minimumSeverityRequested ?? null,
+    severityGenerationAttempts: options.severityGenerationAttempts ?? 1,
   };
 }
 

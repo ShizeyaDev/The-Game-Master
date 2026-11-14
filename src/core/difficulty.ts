@@ -40,6 +40,13 @@ export interface DifficultyEvaluation {
   hazardBannerMessage: string | null;
 }
 
+export interface RunSummaryOptions {
+  constraintsBypassed?: boolean;
+  constraintWarnings?: string[];
+  minimumSeverityRequested?: number | null;
+  severityGenerationAttempts?: number;
+}
+
 export function evaluateRunDifficulty(results: readonly RollResult[]): DifficultyEvaluation {
   if (!Array.isArray(results) || results.length === 0) {
     throw new Error('Cannot evaluate difficulty for an empty results set.');
@@ -97,7 +104,8 @@ export function evaluateRunDifficulty(results: readonly RollResult[]): Difficult
 export function createRunSummary(
   bundle: Pick<GameBundle, 'id' | 'title'>,
   results: RollResult[],
-  timestamp: number = Date.now()
+  timestamp: number = Date.now(),
+  options: RunSummaryOptions = {}
 ): RunSummary {
   const evaluation = evaluateRunDifficulty(results);
 
@@ -112,6 +120,10 @@ export function createRunSummary(
     hasHazardOutlier: evaluation.hasHazardOutlier,
     wasClampedToB: evaluation.wasClampedToB,
     hazardBannerMessage: evaluation.hazardBannerMessage,
+    constraintsBypassed: options.constraintsBypassed ?? false,
+    constraintWarnings: [...(options.constraintWarnings ?? [])],
+    minimumSeverityRequested: options.minimumSeverityRequested ?? null,
+    severityGenerationAttempts: options.severityGenerationAttempts ?? 1,
   };
 }
 

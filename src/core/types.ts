@@ -67,6 +67,10 @@ export interface RunSummary {
   hasHazardOutlier: boolean;
   wasClampedToB: boolean;
   hazardBannerMessage: string | null;
+  constraintsBypassed: boolean;
+  constraintWarnings: string[];
+  minimumSeverityRequested: number | null;
+  severityGenerationAttempts: number;
 }
 
 export interface ImportResult {
